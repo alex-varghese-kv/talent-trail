@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { navbarItems } from "./Navbar.config";
 import { Link } from "react-router-dom";
+import { navbarItems } from "./Navbar.config";
 
 interface NavbarProps {
   setIsOpen(type: boolean): void;
