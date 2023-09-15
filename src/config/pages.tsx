@@ -1,11 +1,14 @@
-import { CandidateAboutUs } from "Containers/CandidateAboutUs/CandidateAboutUs";
-import { CandidateDashboard } from "Containers/CandidateDashboard/CandidateDashboard";
-import { CandidateJobList } from "Containers/CandidateJobList/CandidateJobList";
-import { lazy, ReactElement } from "react";
+import { CandidateAboutUs } from 'Containers/CandidateAboutUs/CandidateAboutUs';
+import { CandidateDashboard } from 'Containers/CandidateDashboard/CandidateDashboard';
+import { CandidateJobList } from 'Containers/CandidateJobList/CandidateJobList';
+import { lazy, ReactElement } from 'react';
 
-const Login = lazy(() => import("../Containers/Login"));
-const CreateJob = lazy(() => import("../Containers/CreateJob"));
-const MyJobs = lazy(() => import("../Containers/Staff/MyJobs/MyJobs"));
+const Login = lazy(() => import('../Containers/Login'));
+const CreateJob = lazy(() => import('../Containers/CreateJob'));
+const MyJobs = lazy(() => import('../Containers/Staff/MyJobs/MyJobs'));
+const CandidateResume = lazy(
+  () => import('../Containers/CandidateResume/CandidateResume')
+);
 
 interface Page {
   title: string;
@@ -20,39 +23,40 @@ interface PagePaths {
 }
 
 export const pagePaths: PagePaths = {
-  login: "/login",
-  home: "/home",
-  about: "/about",
-  createJob: "/admin/post-a-new-job",
-  myJobs: "/admin/my-jobs",
-  savedCandidate: "/admin/saved-candidate",
-  jobList: "jobList",
+  login: '/login',
+  home: '/home',
+  about: '/about',
+  createJob: '/admin/post-a-new-job',
+  myJobs: '/admin/my-jobs',
+  savedCandidate: '/admin/saved-candidate',
+  jobList: 'jobList',
+  resume: '/resume',
 };
 
 export const pages: Array<Page> = [
   {
-    title: "Login",
+    title: 'Login',
     path: pagePaths.dashboard,
     Component: <Login />,
     redirectTo: pagePaths.patientList,
   },
   {
-    title: "Home",
+    title: 'Home',
     path: pagePaths.home,
     Component: <CandidateDashboard />,
   },
   {
-    title: "About us",
+    title: 'About us',
     path: pagePaths.about,
     Component: <CandidateAboutUs />,
   },
   {
-    title: "My Jobs",
+    title: 'My Jobs',
     path: pagePaths.myJobs,
     Component: <MyJobs />,
   },
   {
-    title: "Post a New Job",
+    title: 'Post a New Job',
     path: pagePaths.createJob,
     Component: <CreateJob />,
   },
@@ -63,8 +67,13 @@ export const pages: Array<Page> = [
   //   // redirectTo: pagePaths.cre,
   // },
   {
-    title: "Job Listing",
+    title: 'Job Listing',
     path: pagePaths.jobList,
     Component: <CandidateJobList />,
+  },
+  {
+    title: 'My resume',
+    path: pagePaths.resume,
+    Component: <CandidateResume />,
   },
 ];
