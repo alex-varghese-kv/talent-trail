@@ -1,7 +1,7 @@
 import { LoginMutation, PasswordLoginDetails } from "types/login.type";
 import { useIsLoggedIn } from "service/auth/authToken";
 import { UsegraphQlLazyQuery, UseGraphQlMutation, UseGraphQlQuery } from "./hooks";
-import { LOGGED_IN_USERDETAILS, PASSWORD_LOGIN, REGISTER_CANDIDATE } from "service/query/auth";
+import { LOGGED_IN_USERDETAILS, PASSWORD_LOGIN, REGISTER_CANDIDATE, REGISTER_EMPLOYEE } from "service/query/auth";
 
 const defaultConfig = {};
 
@@ -20,6 +20,17 @@ export const SignUp: LoginMutation = (config = defaultConfig) => {
   const [, setIsLoggedIn] = useIsLoggedIn();
 
   return UseGraphQlMutation(REGISTER_CANDIDATE, {
+    ...config,
+    onCompleted: (data: PasswordLoginDetails) => {
+      setIsLoggedIn(!!data.passwordLogin.accessToken);
+    },
+  });
+};
+
+export const SignUpEmployee: LoginMutation = (config = defaultConfig) => {
+  const [, setIsLoggedIn] = useIsLoggedIn();
+
+  return UseGraphQlMutation(REGISTER_EMPLOYEE, {
     ...config,
     onCompleted: (data: PasswordLoginDetails) => {
       setIsLoggedIn(!!data.passwordLogin.accessToken);
