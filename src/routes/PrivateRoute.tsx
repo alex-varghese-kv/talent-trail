@@ -1,11 +1,15 @@
-import { pages } from "config/pages";
-import React, { Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navbar } from 'Components/Navbar/Navbar';
+import { pages } from 'config/pages';
+import React, { FC, Suspense, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
-const privateRoute = () => {
+const PrivateRoute: FC = () => {
+  const [showSideNav, setshowSideNav] = useState(true);
+
   return (
     <div>
       <div>Header</div>
+      <Navbar isOpen={showSideNav} setIsOpen={setshowSideNav} />
       {
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
@@ -26,4 +30,4 @@ const privateRoute = () => {
   );
 };
 
-export default privateRoute;
+export default PrivateRoute;
