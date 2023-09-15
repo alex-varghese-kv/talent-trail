@@ -90,7 +90,7 @@ export const Navbar: FC<NavbarProps> = ({ setIsOpen, isOpen }) => {
                   data-nimg="1"
                   className="lazy-img"
                   style={{ color: "transparent" }}
-                  src="media/icon_9.69f19313.svg"
+                  src="/media/icon_9.69f19313.svg"
                 />
                 <span>Logout</span>
               </a>
