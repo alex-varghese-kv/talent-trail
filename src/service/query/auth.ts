@@ -32,6 +32,32 @@ const REGISTER_CANDIDATE = gql`
   }
 `;
 
+const REGISTER_EMPLOYEE = gql`
+  mutation employeeSignUp(
+    $name: String!
+    $email: String!
+    $role: [String]!
+    $password: String!
+    $experience: Int!
+  ) {
+    employeeSignUp(
+      input: {
+        name: $name
+        email: $email
+        role: $role
+        password: $password
+        experience: $experience
+      }
+    ) {
+      id
+      name
+      email
+      role
+      password
+    }
+  }
+`;
+
 const LOGGED_IN_USERDETAILS = gql`
   query getLoggedInUser {
     getLoggedInUser {
@@ -42,4 +68,9 @@ const LOGGED_IN_USERDETAILS = gql`
     }
   }
 `;
-export { PASSWORD_LOGIN, REGISTER_CANDIDATE, LOGGED_IN_USERDETAILS };
+export {
+  PASSWORD_LOGIN,
+  REGISTER_CANDIDATE,
+  LOGGED_IN_USERDETAILS,
+  REGISTER_EMPLOYEE,
+};

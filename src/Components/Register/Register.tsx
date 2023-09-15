@@ -4,10 +4,13 @@ import cx from "classnames";
 import { useNavigate } from "react-router";
 import { pagePaths } from "config/pages";
 import { useForm } from "react-hook-form";
-import {  SignUp } from "service/hooks/auth.hooks";
+import { SignUp, SignUpEmployee } from "service/hooks/auth.hooks";
 export const RegisterPage: FC = () => {
   const [registerType, setRegisterType] = useState("emp");
   const [submitSignup] = SignUp({
+    fetchPolicy: "network-only",
+  });
+  const [submitEmpSignup] = SignUpEmployee({
     fetchPolicy: "network-only",
   });
   const navigate = useNavigate();
@@ -26,17 +29,38 @@ export const RegisterPage: FC = () => {
       password: data?.password,
     };
     console.log("data", submitData, data);
-    submitSignup({
-      variables: {
-        ...submitData,
-      },
-      onCompleted: (data: any) => {
-        console.log(">>>", data);
-        if (data?.email) {
-          navigate(pagePaths?.login);
-        }
-      },
-    });
+    if (registerType === "can") {
+      submitSignup({
+        variables: {
+          ...submitData,
+        },
+        onCompleted: (data: any) => {
+          console.log(">>>", data);
+          if (data?.email) {
+            navigate(pagePaths?.login);
+          }
+        },
+      });
+    } else {
+      const submitDataEmp = {
+        name: data?.name,
+        email: data?.email,
+        role: ["HR"],
+        password: data?.password,
+        experience: 5
+      };
+      submitEmpSignup({
+        variables: {
+          ...submitDataEmp,
+        },
+        onCompleted: (data: any) => {
+          console.log(">>>", data);
+          if (data?.email) {
+            navigate(pagePaths?.savedCandidate);
+          }
+        },
+      });
+    }
   };
   return (
     <>

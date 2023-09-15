@@ -1,6 +1,18 @@
 import { gql } from "@apollo/client";
 
 const GET_JOBS = gql`
+  query {
+    getJob {
+      id
+      title
+      description
+      location
+      info
+    }
+  }
+`;
+
+const GET_JOB = gql`
   query ($id: ID!) {
     getJob(id: $id) {
       id
@@ -11,6 +23,7 @@ const GET_JOBS = gql`
     }
   }
 `;
+
 const GET_CANDIDATES = gql`
   query ($id: ID!) {
     getCandidate(id: $id) {
