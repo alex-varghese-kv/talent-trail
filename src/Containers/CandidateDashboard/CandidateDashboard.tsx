@@ -6,6 +6,8 @@ import { JobDetailsRow } from "Components/JobDetailsRow";
 import { LoginPage } from "Components/Login/LoginPage";
 import { useState } from "react";
 import { useGetJobs } from "service/hooks/jobs.hooks";
+import { Link } from "react-router-dom";
+import { pagePaths } from "config/pages";
 
 export const CandidateDashboard = () => {
   const jobListData = [
@@ -60,12 +62,12 @@ export const CandidateDashboard = () => {
             </div>
             <div className="col-lg-4">
               <div className="d-flex justify-content-lg-end">
-                <a
+                <Link
                   className="btn-six d-none d-lg-inline-block"
-                  href="job-grid-v2.html"
+                  to={pagePaths.jobList}
                 >
                   Explore all fields
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -210,9 +212,12 @@ export const CandidateDashboard = () => {
             </div>
           </div>
           <div className="text-center mt-40 d-lg-none">
-            <a className="btn-six" href="job-grid-v2.html">
+            <Link
+              className="btn-six d-none d-lg-inline-block"
+              to={pagePaths.jobList}
+            >
               Explore all fields
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -231,19 +236,18 @@ export const CandidateDashboard = () => {
                     Commonly used in the graphic, print publishing industris for
                     previewing visual mockups. limited social discrimination.
                   </p>
-                  <a
+                  <Link
                     className="find-job-btn d-flex align-items-center text-white"
-                    href="job-list-v1.html"
+                    to={pagePaths.jobList}
                   >
                     <span className="fw-500">Find your job.</span>
                     <span className="ms-1">
-                      {" "}
                       <u>Explore all</u>
                     </span>
                     <span className="ms-auto">
                       <i className="bi bi-chevron-right"></i>
                     </span>
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="col-lg-6 order-lg-first">
