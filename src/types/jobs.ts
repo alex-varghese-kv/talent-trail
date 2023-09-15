@@ -8,10 +8,10 @@ interface Jobs {
   info: any;
 }
 export interface GetJobList {
-  getJob: Jobs[];
+  getJobs: Jobs[];
 }
 
-interface Candidate {
+export interface Candidate {
   id: string;
   name: string;
   age: number;
@@ -19,15 +19,32 @@ interface Candidate {
   phone: string;
   info: any;
 }
-export interface GetCandidate {
-  getCandidate: Candidate[];
+export interface GetCandidatesData {
+  getCandidates: Candidate[];
 }
 export interface GetJobs {
   (config?: QueryHookOptions): QueryResult<GetJobList>;
 }
 
 export interface GetCandidates {
-  (config?: QueryHookOptions): QueryResult<GetJobList>;
+  (config?: QueryHookOptions): QueryResult<GetCandidatesData>;
+}
+
+export interface Job {
+  title: string;
+}
+
+export interface Application {
+  id: string;
+  timeline: JSON;
+  job: Job;
+  candidate: Candidate;
+}
+export interface GetApplications {
+  findApplications: Application[];
+}
+export interface GetApplication {
+  (config?: QueryHookOptions): QueryResult<GetApplications>;
 }
 
 export interface GetCandidateQuery {

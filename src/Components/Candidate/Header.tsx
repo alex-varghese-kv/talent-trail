@@ -1,10 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Header = ({
   setShowLogin,
 }: {
   setShowLogin: (show: boolean) => void;
 }) => {
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
   return (
     <header className="theme-main-menu menu-overlay sticky-menu ">
       <div className="inner-content position-relative">
@@ -12,21 +15,37 @@ const Header = ({
           <div className="d-flex align-items-center justify-content-between">
             <div className="right-widget ms-auto ms-lg-0 order-lg-2">
               <ul className="d-flex align-items-center style-none">
-                <li>
-                  <a
-                    className=" btn fw-500 text-white "
-                    data-bs-toggle="modal"
-                    data-bs-target="#loginModal"
-                    onClick={() => setShowLogin(true)}
-                  >
-                    Login
-                  </a>
-                </li>
-                <li className="d-none d-md-block ms-4">
-                  <a className="btn-five" href="/register">
-                    Register
-                  </a>
-                </li>
+                {!token ? (
+                  <>
+                    <li>
+                      <a
+                        className=" btn fw-500 text-white "
+                        data-bs-toggle="modal"
+                        data-bs-target="#loginModal"
+                        onClick={() => setShowLogin(true)}
+                      >
+                        Login
+                      </a>
+                    </li>
+                    <li className="d-none d-md-block ms-4">
+                      <a className="btn-five" href="/register">
+                        Register
+                      </a>
+                    </li>
+                  </>
+                ) : (
+                  <li className="d-none d-md-block ms-4">
+                    <button
+                      className="btn-five"
+                      onClick={() => {
+                        localStorage.clear();
+                        navigate("/home");
+                      }}
+                    >
+                      Logout
+                    </button>
+                  </li>
+                )}
               </ul>
             </div>
             <nav className="navbar navbar-expand-lg p0 ms-3 ms-lg-0 order-lg-1">
@@ -119,6 +138,3 @@ const Header = ({
 };
 
 export default Header;
-function useState(arg0: boolean): [any, any] {
-  throw new Error("Function not implemented.");
-}

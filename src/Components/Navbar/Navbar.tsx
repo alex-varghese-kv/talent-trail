@@ -1,8 +1,11 @@
 import { FC, Fragment, ReactElement } from 'react';
 import cx from 'classnames';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, redirect, useLocation } from 'react-router-dom';
 import { pagePaths } from 'config/pages';
 import { navbarItems } from './Navbar.config';
+import { useResetRecoilState } from 'recoil';
+import { loginedUserDetails } from 'store/atoms/authAtom';
+import { useNavigate } from 'react-router-dom';
 
 interface NavbarProps {
   setIsOpen(type: boolean): void;
@@ -10,6 +13,14 @@ interface NavbarProps {
 }
 
 export const Navbar: FC<NavbarProps> = ({ setIsOpen, isOpen }) => {
+  const navigate = useNavigate();
+  const filterReset = useResetRecoilState(loginedUserDetails);
+  const handleLogout = () => {
+    filterReset();
+    localStorage.clear();
+    navigate('/home');
+  };
+
   return (
     <>
       <aside className="dash-aside-navbar ">
@@ -44,9 +55,7 @@ export const Navbar: FC<NavbarProps> = ({ setIsOpen, isOpen }) => {
                 src="/assets/john_honai.png"
               />
             </div>
-            <div className="user-name-data user-name text-center">
-              John Honai
-            </div>
+            <div className="user-name-data user-name text-center">John Doe</div>
           </div>
           <div
             className="flex flex-col justify-between"
@@ -79,10 +88,7 @@ export const Navbar: FC<NavbarProps> = ({ setIsOpen, isOpen }) => {
               </ul>
             </nav>
             <div className="mt-10">
-              <a
-                href="#"
-                className="d-flex w-100 align-items-center logout-btn"
-              >
+              <button className="flex" onClick={handleLogout}>
                 <img
                   alt="icon"
                   loading="lazy"
@@ -90,12 +96,12 @@ export const Navbar: FC<NavbarProps> = ({ setIsOpen, isOpen }) => {
                   height="22"
                   decoding="async"
                   data-nimg="1"
-                  className="lazy-img"
+                  className="lazy-img mr-1"
                   style={{ color: 'transparent' }}
                   src="/media/icon_9.69f19313.svg"
                 />
                 <span>Logout</span>
-              </a>
+              </button>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 interface JobDetailsRowProps {
   roleDesc: string;
-  date: string;
+  date?: string;
   location: string;
   showSave?: boolean;
   showApply?: boolean;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -12,7 +12,10 @@ import InterviewPending from './components/InterviewPending/InterviewPending';
 import AcceptInterviewSchedule from './components/AcceptInterviewSchedule/AcceptInterviewSchedule';
 import InterviewFeedback from './components/InterviewFeedback/InterviewFeedback';
 
-const TimeLine = () => {
+interface Props {
+  timeLine: any;
+}
+const TimeLine: FC<Props> = ({ timeLine }) => {
   const getTImeLineDetails = (
     status = '',
     actionItem: string,
@@ -33,7 +36,7 @@ const TimeLine = () => {
   return (
     <div className="App">
       <VerticalTimeline layout="1-column-left">
-        {events.map((event) => (
+        {timeLine.map((event: any) => (
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
             iconStyle={{ background: 'rgb(49,121,90)', color: '#fff' }}
@@ -41,12 +44,12 @@ const TimeLine = () => {
             <div className="flex w-full flex-col">
               <div className="flex justify-between w-full border-b-2 ">
                 <h4 className="text-sm">
-                  {STATUS_LABEL[`${event?.status}`] || ''}
+                  {STATUS_LABEL[`${event?.action}`] || ''}
                 </h4>
-                <h4 className="text-sm">July 8</h4>
+                <h4 className="text-sm">{event.date}</h4>
               </div>
               <div className="flex text-left break-all">
-                {getTImeLineDetails(event?.status, '', event.event)}
+                {getTImeLineDetails(event?.action, '', event.message)}
               </div>
             </div>
           </VerticalTimelineElement>

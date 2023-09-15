@@ -3,7 +3,24 @@ export enum ATOMS {
 }
 
 export const defaultLoginedDetails = {
-  name: "",
+  id: 0,
+  email: "String",
+  groups: [],
+};
+
+export const defaultApplicationData = {
+  id: 0,
+  timeline: [],
+  job: {
+    title: "",
+  },
+  candidate: {
+    id: "",
+    name: "",
+    age: 0,
+    email: "",
+    phone: "",
+  },
 };
 export const defaultCandidateDetails = {
   name: "",
