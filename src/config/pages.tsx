@@ -1,5 +1,5 @@
 import { CandidateAboutUs } from 'Containers/CandidateAboutUs';
-import { CandidateDashboard } from 'Containers/CandidateDashboard';
+import { CandidateDashboard } from 'Containers/CandidateDashboard/CandidateDashboard';
 import { lazy, ReactElement } from 'react';
 
 const Login = lazy(() => import('../Containers/Login'));
