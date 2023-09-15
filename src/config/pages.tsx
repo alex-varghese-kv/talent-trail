@@ -1,5 +1,5 @@
 import { CandidateAboutUs } from "Containers/CandidateAboutUs";
-import { CandidateDashboard } from "Containers/CandidateDashboard";
+import { CandidateDashboard } from "Containers/CandidateDashboard/CandidateDashboard";
 import { lazy, ReactElement } from "react";
 
 const Login = lazy(() => import("../Containers/Login"));
@@ -19,7 +19,7 @@ interface PagePaths {
 export const pagePaths: PagePaths = {
   login: "/login",
   home: "/home",
-  about: "/about"
+  about: "/about",
 };
 
 export const pages: Array<Page> = [

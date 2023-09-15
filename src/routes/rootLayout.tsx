@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { pagePaths } from "config/pages";
 
 import PrivateRoutes from "./privateRoute";
+import { CandidateDashboard } from "Containers/CandidateDashboard/CandidateDashboard";
 
 const Login = lazy(() => import("Containers/Login"));
 
@@ -13,6 +14,7 @@ const rootLayout: FC = () => {
     <Router>
       <Routes>
         <Route path={pagePaths.login} element={<Login />} />
+        <Route path={pagePaths.home} element={<CandidateDashboard />} />
         <Route path="*" element={<PrivateRoutes />} />
       </Routes>
     </Router>
