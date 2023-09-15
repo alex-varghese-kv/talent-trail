@@ -1,5 +1,11 @@
 import { hover } from '@testing-library/user-event/dist/hover';
 import { FC, ReactNode } from 'react';
+import {
+  Control,
+  Controller,
+  FieldValues,
+  useFormContext,
+} from 'react-hook-form';
 import ReactSelect, {
   components,
   DropdownIndicatorProps,
@@ -10,6 +16,7 @@ import ReactSelect, {
 } from 'react-select';
 
 type Props = {
+  // control?: Control<FieldValues, any>;
   name?: string;
   label?: string;
   options?: any;
@@ -28,7 +35,8 @@ export interface Option {
 }
 
 export const Select: FC<Props> = ({
-  name,
+  name = '',
+  // control,
   label,
   options,
   placeholder,
@@ -37,6 +45,7 @@ export const Select: FC<Props> = ({
   value,
   isMulti = false,
 }) => {
+  const { control } = useFormContext();
   const VALUE_LIMIT = 4;
   const MultiValue = (props: any) => {
     const { index, getValue } = props;
@@ -97,18 +106,26 @@ export const Select: FC<Props> = ({
   };
 
   return (
-    <ReactSelect
-      name={name}
-      options={options}
-      placeholder={placeholder}
-      styles={customStye}
-      isSearchable={isSearchable}
-      value={value}
-      isMulti={isMulti as any}
-      components={{ MultiValue }}
-      closeMenuOnSelect={false}
+    <Controller
+      name={name} // Replace with your field name
+      control={control}
+      defaultValue={null} // Set the default value to null or an initial value
+      render={({ field }) => (
+        <ReactSelect
+          {...field}
+          name={name}
+          options={options}
+          placeholder={placeholder}
+          styles={customStye}
+          isSearchable={isSearchable}
+          value={value}
+          isMulti={isMulti as any}
+          components={{ MultiValue }}
+          closeMenuOnSelect={false}
 
-      // isMulti={true}
+          // isMulti={true}
+        />
+      )}
     />
   );
 };

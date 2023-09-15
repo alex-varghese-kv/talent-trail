@@ -5,8 +5,10 @@
 
 import BasicDatePicker from 'Components/BasicDatePicker/BasicDatePicker';
 import { useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 
-export const AddExp = () => {
+export const AddExp = ({ name }: { name: string }) => {
+  const { register } = useFormContext();
   const [isOpen, setOpenCollapsible] = useState(false);
 
   return (
@@ -27,7 +29,7 @@ export const AddExp = () => {
             <input
               type="text"
               placeholder="Ex: Product Designer"
-              //   {...register('jobTitle')}
+              {...register(`${[name]}.title`)}
             />
           </div>
           <div className="dash-input-wrapper mb-30">
@@ -35,7 +37,7 @@ export const AddExp = () => {
             <input
               type="text"
               placeholder="Enter college name"
-              //   {...register('jobTitle')}
+              {...register(`${[name]}.company`)}
             />
           </div>
           <div className="flex space-x-9">
