@@ -100,18 +100,18 @@ export const Navbar: FC<NavbarProps> = ({ setIsOpen, isOpen }) => {
                 src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar_03.f35eb58b.jpg&amp;w=256&amp;q=75"
               />
             </div>
-            <div className="user-name-data">
-              <button
+            <div className="user-name-data user-name text-center">
+              {/* <button
                 className="user-name dropdown-toggle"
                 type="button"
                 id="profile-dropdown"
                 data-bs-toggle="dropdown"
                 data-bs-auto-close="outside"
                 aria-expanded="false"
-              >
-                John Doe
-              </button>
-              <ul className="dropdown-menu" aria-labelledby="profile-dropdown">
+              > */}
+              John Doe
+              {/* </button> */}
+              {/* <ul className="dropdown-menu" aria-labelledby="profile-dropdown">
                 <li>
                   <a
                     className="dropdown-item d-flex align-items-center"
@@ -169,31 +169,33 @@ export const Navbar: FC<NavbarProps> = ({ setIsOpen, isOpen }) => {
                     <span className="ms-2 ps-1">Notification</span>
                   </a>
                 </li>
-              </ul>
+              </ul> */}
             </div>
           </div>
           <nav className="dasboard-main-nav">
             <ul className="style-none">
-              <li>
-                <a
-                  className="d-flex w-100 align-items-center "
-                  href="/dashboard/employ-dashboard"
-                >
-                  <img
-                    alt=""
-                    loading="lazy"
-                    width="20"
-                    height="20"
-                    decoding="async"
-                    data-nimg="1"
-                    className="lazy-img"
-                    style={{ color: 'transparent' }}
-                    src="/_next/static/media/icon_1.2012e511.svg"
-                  />
-                  <span>Dashboard</span>
-                </a>
-              </li>
-              <li>
+              {navbarItems.map((item, index) => (
+                <li key={index}>
+                  <a
+                    className="d-flex w-100 align-items-center "
+                    href={item.path}
+                  >
+                    <img
+                      alt=""
+                      loading="lazy"
+                      width="20"
+                      height="20"
+                      decoding="async"
+                      data-nimg="1"
+                      className="lazy-img"
+                      style={{ color: 'transparent' }}
+                      src={item.icon}
+                    />
+                    <span>{item.title}</span>
+                  </a>
+                </li>
+              ))}
+              {/* <li>
                 <a
                   className="d-flex w-100 align-items-center "
                   href="/dashboard/employ-dashboard/profile"
@@ -253,7 +255,7 @@ export const Navbar: FC<NavbarProps> = ({ setIsOpen, isOpen }) => {
               <li>
                 <a
                   className="d-flex w-100 align-items-center active"
-                  href="/dashboard/employ-dashboard/submit-job"
+                  href={pagePaths.createJob}
                 >
                   <img
                     alt=""
@@ -346,7 +348,7 @@ export const Navbar: FC<NavbarProps> = ({ setIsOpen, isOpen }) => {
                   />
                   <span>Delete Account</span>
                 </a>
-              </li>
+              </li> */}
             </ul>
           </nav>
           <div className="profile-complete-status">

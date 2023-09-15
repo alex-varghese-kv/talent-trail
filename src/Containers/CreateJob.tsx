@@ -48,20 +48,29 @@ const CreateJob = () => {
             <h4 className="dash-title-three">Job Details</h4>
             <div className="dash-input-wrapper mb-30">
               <label htmlFor="">Job Title*</label>
-              <input type="text" placeholder="Ex: Product Designer" />
+              <input
+                type="text"
+                placeholder="Ex: Product Designer"
+                {...register('jobTitle')}
+              />
             </div>
             <div className="dash-input-wrapper mb-30">
               <label htmlFor="">Job Description*</label>
               <textarea
                 className="size-lg"
                 placeholder="Write about the job in details..."
+                {...register('jobDescription')}
               ></textarea>
             </div>
             <div className="row align-items-end">
               <div className="col-md-6">
-                <div className="dash-input-wrapper mb-30">
+                <div className=" mb-30">
                   <label htmlFor="">Job Category</label>
-                  <div className="nice-select  false" role="button">
+                  <Select
+                    options={JOB_CATEGORY_OPTIONS}
+                    {...register('jobCategory')}
+                  />
+                  {/* <div className="nice-select  true" role="button">
                     <span className="current">Designer</span>
                     <ul className="list" role="menubar">
                       <li
@@ -93,7 +102,7 @@ const CreateJob = () => {
                         Writing
                       </li>
                     </ul>
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div className="col-md-6">
