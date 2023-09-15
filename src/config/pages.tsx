@@ -1,5 +1,6 @@
 import { CandidateAboutUs } from "Containers/CandidateAboutUs";
 import { CandidateDashboard } from "Containers/CandidateDashboard/CandidateDashboard";
+import SavedCandidate from "Containers/SavedCandidate/SavedCandidate";
 import { lazy, ReactElement } from "react";
 
 const Login = lazy(() => import("../Containers/Login"));
@@ -54,6 +55,11 @@ export const pages: Array<Page> = [
     title: "Post a New Job",
     path: pagePaths.createJob,
     Component: <CreateJob />,
+  },
+  {
+    title: "Saves Candidates",
+    path: pagePaths.savedCandidate,
+    Component: <SavedCandidate />,
   },
   // {
   //   title: 'Saved candidates',

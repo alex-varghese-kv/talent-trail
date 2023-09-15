@@ -1,8 +1,6 @@
-import { FC, Fragment, ReactElement } from "react";
-import cx from "classnames";
+import { FC } from "react";
 import { navbarItems } from "./Navbar.config";
-import { Link, useLocation } from "react-router-dom";
-import { pagePaths } from "config/pages";
+import { Link } from "react-router-dom";
 
 interface NavbarProps {
   setIsOpen(type: boolean): void;
@@ -10,38 +8,6 @@ interface NavbarProps {
 }
 
 export const Navbar: FC<NavbarProps> = ({ setIsOpen, isOpen }) => {
-  const location = useLocation();
-
-  const renderNavItem = (navItem: any, key: string | number): ReactElement => (
-    <Fragment>
-      <Link
-        to={navItem.path}
-        className={cx(
-          `flex justify-between p-2 mb-2 rounded-lg text-lg hover:bg-BG_GREEN hover:text-DARK_GREEN cursor-pointer items-center break-normal navBar ${
-            navItem.customClass ? navItem.customClass : ""
-          }`,
-          {
-            "bg-PRIMARY text-DARK_GREEN navBar-selected":
-              location.pathname.includes(navItem.path),
-          }
-        )}
-      >
-        <button className="w-full">
-          {typeof navItem.title === "string" ? (
-            <div className="flex items-center">
-              {navItem.icon && <navItem.icon className="mr-4 w-5 h-5" />}
-              <span className="md:text-17px xxs:text-sm text-left">
-                {navItem.title}
-              </span>
-            </div>
-          ) : (
-            <>{navItem.title}</>
-          )}
-        </button>
-      </Link>
-    </Fragment>
-  );
-
   return (
     <>
       <aside className="dash-aside-navbar ">
