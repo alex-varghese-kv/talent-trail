@@ -31,23 +31,34 @@ export const Select: FC<Props> = ({
   placeholder,
   selectedValue,
 }) => {
-  const customStye: StylesConfig<Option, boolean> = {
+  const customStye: StylesConfig<OptionProps, false> = {
     control: (base) => {
       return {
         ...base,
         height: '55px',
+        cursor: 'pointer',
+        border: 'e5e5e5',
+        outline: 'none',
       };
     },
     valueContainer: (base) => ({
       ...base,
-      // width: 'max-content',
       height: '55px',
-      padding: '0px',
-      // ...valueContainerStyles,
+      padding: '0px 25px 0px 20px',
     }),
-    option: (base) => {
+    indicatorSeparator: (base) => ({
+      ...base,
+      display: 'none',
+    }),
+    option: (base, state) => {
       return {
         ...base,
+        backgroundColor: state.isSelected
+          ? '#FFFFFF'
+          : state.isFocused
+          ? '#F0F5F3'
+          : '#FFFFFF',
+        color: '#000000',
         ':hover': {
           backgroundColor: '#F0F5F3',
         },
@@ -61,6 +72,7 @@ export const Select: FC<Props> = ({
       options={options}
       placeholder={placeholder}
       styles={customStye}
+      isSearchable={false}
     />
   );
 };
