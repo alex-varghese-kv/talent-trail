@@ -3,6 +3,8 @@ import cx from "classnames";
 import { Link, useLocation } from "react-router-dom";
 import { pagePaths } from "config/pages";
 import { navbarItems } from "./Navbar.config";
+import { useResetRecoilState } from "recoil";
+import { loginedUserDetails } from "store/atoms/authAtom";
 
 interface NavbarProps {
   setIsOpen(type: boolean): void;
@@ -10,6 +12,11 @@ interface NavbarProps {
 }
 
 export const Navbar: FC<NavbarProps> = ({ setIsOpen, isOpen }) => {
+  const filterReset = useResetRecoilState(loginedUserDetails);
+  const handleLogout = () => {
+    filterReset();
+  };
+
   return (
     <>
       <aside className="dash-aside-navbar ">
@@ -79,10 +86,7 @@ export const Navbar: FC<NavbarProps> = ({ setIsOpen, isOpen }) => {
               </ul>
             </nav>
             <div className="mt-10">
-              <a
-                href="#"
-                className="d-flex w-100 align-items-center logout-btn"
-              >
+              <button className="flex" onClick={handleLogout}>
                 <img
                   alt="icon"
                   loading="lazy"
@@ -90,12 +94,12 @@ export const Navbar: FC<NavbarProps> = ({ setIsOpen, isOpen }) => {
                   height="22"
                   decoding="async"
                   data-nimg="1"
-                  className="lazy-img"
+                  className="lazy-img mr-1"
                   style={{ color: "transparent" }}
                   src="/media/icon_9.69f19313.svg"
                 />
                 <span>Logout</span>
-              </a>
+              </button>
             </div>
           </div>
         </div>

@@ -1,4 +1,3 @@
-import { pagePaths } from "config/pages";
 import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -47,8 +46,10 @@ export const LoginPage: FC<{
   const getUserDetails = () => {
     fetchLoggedUserDetails({
       onCompleted: (data: any) => {
-        console.log("LoginData>>>>", data);
-        setLoggedinDetails(data);
+        if (data) {
+          setLoggedinDetails(data.getLoggedInUser);
+          setShowLogin(false);
+        }
       },
     });
   };

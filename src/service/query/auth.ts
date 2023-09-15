@@ -38,6 +38,7 @@ const LOGGED_IN_USERDETAILS = gql`
       id
       email
       groups
+      name
     }
   }
 `;
