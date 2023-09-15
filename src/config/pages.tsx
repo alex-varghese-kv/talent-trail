@@ -3,6 +3,8 @@ import { CandidateDashboard } from "Containers/CandidateDashboard/CandidateDashb
 import SavedCandidate from "Containers/SavedCandidate/SavedCandidate";
 import { CandidateJobList } from "Containers/CandidateJobList/CandidateJobList";
 import { lazy, ReactElement } from "react";
+import { JobDetails } from "Containers/JobDetails.tsx/JobDetails";
+import { CandidateProfileDetails } from "Containers/CandidateProfile/CandidateProfileDetails";
 
 const Login = lazy(() => import("../Containers/Login"));
 const CreateJob = lazy(() => import("../Containers/CreateJob"));
@@ -31,8 +33,10 @@ export const pagePaths: PagePaths = {
   interviewTimeLine: "/admin/status",
   myJobs: "/admin/my-jobs",
   savedCandidate: "/admin/saved-candidate",
-  jobList: "jobList",
-  register: "register",
+  jobList: "/jobList",
+  register: "/register",
+  jobDetails: "/jobDetails",
+  profile: "/admin/profile"
 };
 
 export const pages: Array<Page> = [
@@ -83,4 +87,15 @@ export const pages: Array<Page> = [
     path: pagePaths.interviewTimeLine,
     Component: <InterviewTimeLine />,
   },
+  {
+    title: "Job Details",
+    path: pagePaths.jobDetails,
+    Component: <JobDetails />,
+  },
+  {
+    title: "Job Details",
+    path: pagePaths.profile,
+    Component: <CandidateProfileDetails />,
+    
+  }
 ];

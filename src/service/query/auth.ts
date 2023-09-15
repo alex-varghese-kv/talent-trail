@@ -9,4 +9,19 @@ const PASSWORD_LOGIN = gql`
     }
   }
 `;
-export { PASSWORD_LOGIN };
+const REGISTER_CANDIDATE = gql`
+mutation candidateSignUp($name: String!,
+  $age: Int!,
+  $email: String!,
+  $phone: String!,
+  $password: String!) {
+    candidateSignUp(input: { name: $name, age: $age,email: $email, phone: $phone, password: $password }) {
+      id
+      name
+      age
+      email
+      phone
+  }
+}
+`;
+export { PASSWORD_LOGIN, REGISTER_CANDIDATE };
