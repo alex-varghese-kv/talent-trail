@@ -15,6 +15,8 @@ type Props = {
   options?: any;
   placeholder?: string;
   selectedValue?: any;
+  isSearchable?: boolean;
+  value?: any;
 };
 export interface Option {
   value: any;
@@ -30,6 +32,8 @@ export const Select: FC<Props> = ({
   options,
   placeholder,
   selectedValue,
+  isSearchable = false,
+  value,
 }) => {
   const customStye: StylesConfig<OptionProps, false> = {
     control: (base) => {
@@ -37,8 +41,10 @@ export const Select: FC<Props> = ({
         ...base,
         height: '55px',
         cursor: 'pointer',
-        border: 'e5e5e5',
-        outline: 'none',
+        // border: '#e5e5e5',
+        border: '1px solid  #e5e5e5',
+        borderWidth: '1px',
+        // outline: 'none',
       };
     },
     valueContainer: (base) => ({
@@ -65,6 +71,7 @@ export const Select: FC<Props> = ({
       };
     },
   };
+  console.log(value);
 
   return (
     <ReactSelect
@@ -72,7 +79,10 @@ export const Select: FC<Props> = ({
       options={options}
       placeholder={placeholder}
       styles={customStye}
-      isSearchable={false}
+      isSearchable={isSearchable}
+      value={value}
+      // isMulti
+      // isMulti={true}
     />
   );
 };
