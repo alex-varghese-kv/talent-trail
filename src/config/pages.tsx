@@ -7,6 +7,9 @@ import { lazy, ReactElement } from "react";
 const Login = lazy(() => import("../Containers/Login"));
 const CreateJob = lazy(() => import("../Containers/CreateJob"));
 const MyJobs = lazy(() => import("../Containers/Staff/MyJobs/MyJobs"));
+const InterviewTimeLine = lazy(
+  () => import("../Containers/InterviewTimeLine/InterviewTimeLine")
+);
 
 interface Page {
   title: string;
@@ -25,10 +28,11 @@ export const pagePaths: PagePaths = {
   home: "/home",
   about: "/about",
   createJob: "/admin/post-a-new-job",
+  interviewTimeLine: "/admin/status",
   myJobs: "/admin/my-jobs",
   savedCandidate: "/admin/saved-candidate",
   jobList: "jobList",
-  register: "register"
+  register: "register",
 };
 
 export const pages: Array<Page> = [
@@ -73,5 +77,10 @@ export const pages: Array<Page> = [
     title: "Job Listing",
     path: pagePaths.jobList,
     Component: <CandidateJobList />,
+  },
+  {
+    title: "Job Timeline",
+    path: pagePaths.interviewTimeLine,
+    Component: <InterviewTimeLine />,
   },
 ];
