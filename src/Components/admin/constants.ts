@@ -1,0 +1,125 @@
+export const SKILLS = [
+    { value: 1, label: "Communication Skills" },
+    { value: 2, label: "Problem Solving" },
+    { value: 3, label: "Teamwork" },
+    { value: 4, label: "Leadership" },
+    { value: 5, label: "Time Management" },
+    { value: 6, label: "Adaptability" },
+    { value: 7, label: "Creativity" },
+    { value: 8, label: "Critical Thinking" },
+    { value: 9, label: "Technical Skills" },
+    { value: 10, label: "Analytical Skills" },
+    { value: 11, label: "Customer Service" },
+    { value: 12, label: "Project Management" },
+    { value: 13, label: "Data Analysis" },
+    { value: 14, label: "Coding/Programming" },
+    { value: 15, label: "Sales" },
+    { value: 16, label: "Marketing" },
+    { value: 17, label: "Negotiation" },
+    { value: 18, label: "Research" },
+    { value: 19, label: "Networking" },
+    { value: 20, label: "Financial Analysis" },
+    { value: 21, label: "Microsoft Office Suite" },
+    { value: 22, label: "Java" },
+    { value: 23, label: "Python" },
+    { value: 24, label: "JavaScript" },
+    { value: 25, label: "SQL" },
+    { value: 26, label: "HTML/CSS" },
+    { value: 27, label: "React" },
+    { value: 28, label: "Node.js" },
+    { value: 29, label: "Angular" },
+    { value: 30, label: "Ruby on Rails" },
+    { value: 31, label: "Design" }
+
+    // Add more skills as needed
+  ]
+
+  export const STATES = [
+    [
+      { id: 'AN', label: 'Andaman and Nicobar Islands' },
+      { id: 'AP', label: 'Andhra Pradesh' },
+      { id: 'AR', label: 'Arunachal Pradesh' },
+      { id: 'AS', label: 'Assam' },
+      { id: 'BR', label: 'Bihar' },
+      { id: 'CG', label: 'Chhattisgarh' },
+      { id: 'CH', label: 'Chandigarh' },
+      { id: 'DN', label: 'Dadra and Nagar Haveli and Daman and Diu' },
+      { id: 'DL', label: 'Delhi' },
+      { id: 'GA', label: 'Goa' },
+      { id: 'GJ', label: 'Gujarat' },
+      { id: 'HP', label: 'Himachal Pradesh' },
+      { id: 'HR', label: 'Haryana' },
+      { id: 'JH', label: 'Jharkhand' },
+      { id: 'JK', label: 'Jammu and Kashmir' },
+      { id: 'KA', label: 'Karnataka' },
+      { id: 'KL', label: 'Kerala' },
+      { id: 'LA', label: 'Ladakh' },
+      { id: 'LD', label: 'Lakshadweep' },
+      { id: 'MH', label: 'Maharashtra' },
+      { id: 'ML', label: 'Meghalaya' },
+      { id: 'MN', label: 'Manipur' },
+      { id: 'MP', label: 'Madhya Pradesh' },
+      { id: 'MZ', label: 'Mizoram' },
+      { id: 'NL', label: 'Nagaland' },
+      { id: 'OR', label: 'Odisha' },
+      { id: 'PB', label: 'Punjab' },
+      { id: 'PY', label: 'Puducherry' },
+      { id: 'RJ', label: 'Rajasthan' },
+      { id: 'SK', label: 'Sikkim' },
+      { id: 'TG', label: 'Telangana' },
+      { id: 'TN', label: 'Tamil Nadu' },
+      { id: 'TR', label: 'Tripura' },
+      { id: 'TT', label: 'All India' },
+      { id: 'UP', label: 'Uttar Pradesh' },
+      { id: 'UT', label: 'Uttarakhand' },
+      { id: 'WB', label: 'West Bengal' },
+    ],
+  ];
+
+  export const FLUENCY_OPTIONS = [
+    { id: 1, label: 'Beginner' },
+    { id: 2, label: 'Intermediate' },
+    { id: 3, label: 'Advanced' },
+    { id: 4, label: 'Fluent' },
+    { id: 5, label: 'Native' },
+  ];
+
+  export const JOB_CATEGORY_OPTIONS = [
+    { id: 1, label: 'Designer' },
+    { id: 2, label: 'Writer' },
+  ];
+
+  export const JOB_TYPE_OPTIONS = [
+    { id: 1, label: 'Full Time' },
+    { id: 2, label: 'Part-Time' },
+    { id: 2, label: 'Hourly Contract' },
+  ];
+
+  export const EXPERIENCE_OPTIONS = [
+    { id: 1, label: 'Expert(' },
+    { id: 2, label: 'Intermediate' },
+    { id: 2, label: 'Beginner' },
+  ];
+
+  export const INDUSTRY_OPTIONS = [
+    { id: 1, label: 'Information Technology' },
+    { id: 2, label: 'Healthcare' },
+    { id: 3, label: 'Finance' },
+    { id: 4, label: 'Education' },
+    { id: 5, label: 'Engineering' },
+    { id: 6, label: 'Marketing' },
+    { id: 7, label: 'Hospitality' },
+    { id: 8, label: 'Retail' },
+    { id: 9, label: 'Entertainment' },
+    { id: 10, label: 'Manufacturing' },
+    { id: 11, label: 'Agriculture' },
+    { id: 12, label: 'Transportation' },
+    { id: 13, label: 'Government' },
+    { id: 14, label: 'Real Estate' },
+    { id: 15, label: 'Legal' },
+    { id: 16, label: 'Art and Design' },
+    { id: 17, label: 'Non-profit' },
+    { id: 18, label: 'Consulting' },
+    { id: 19, label: 'Science' },
+    { id: 20, label: 'Sports' },
+  ];

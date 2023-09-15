@@ -17,6 +17,7 @@ type Props = {
   selectedValue?: any;
   isSearchable?: boolean;
   value?: any;
+  isMulti?: boolean;
 };
 export interface Option {
   value: any;
@@ -34,7 +35,20 @@ export const Select: FC<Props> = ({
   selectedValue,
   isSearchable = false,
   value,
+  isMulti = false,
 }) => {
+  const VALUE_LIMIT = 4;
+  const MultiValue = (props: any) => {
+    const { index, getValue } = props;
+    const hiddenLength = getValue().length - VALUE_LIMIT;
+
+    return index < VALUE_LIMIT ? (
+      <components.MultiValue {...props} />
+    ) : index === VALUE_LIMIT ? (
+      <div className="option-label bg-BG_GREEN rounded-full ml-3 mt-2 text-sm p-2">{`+${hiddenLength} selected`}</div>
+    ) : null;
+  };
+
   const customStye: StylesConfig<OptionProps, false> = {
     control: (base) => {
       return {
@@ -47,11 +61,21 @@ export const Select: FC<Props> = ({
         // outline: 'none',
       };
     },
+    multiValue: (base) => {
+      return {
+        ...base,
+        backgroundColor: '#F0F5F3',
+        marginTop: '15px',
+        borderRadius: '30px',
+        color: '#244034',
+      };
+    },
     valueContainer: (base) => ({
       ...base,
       height: '55px',
       padding: '0px 25px 0px 20px',
     }),
+
     indicatorSeparator: (base) => ({
       ...base,
       display: 'none',
@@ -71,7 +95,6 @@ export const Select: FC<Props> = ({
       };
     },
   };
-  console.log(value);
 
   return (
     <ReactSelect
@@ -81,7 +104,10 @@ export const Select: FC<Props> = ({
       styles={customStye}
       isSearchable={isSearchable}
       value={value}
-      // isMulti
+      isMulti={isMulti as any}
+      components={{ MultiValue }}
+      closeMenuOnSelect={false}
+
       // isMulti={true}
     />
   );
