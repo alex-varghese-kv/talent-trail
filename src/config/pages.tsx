@@ -12,6 +12,7 @@ const MyJobs = lazy(() => import('../Containers/Staff/MyJobs/MyJobs'));
 const InterviewTimeLine = lazy(
   () => import('../Containers/InterviewTimeLine/InterviewTimeLine')
 );
+
 const CandidateResume = lazy(
   () => import('../Containers/CandidateResume/CandidateResume')
 );

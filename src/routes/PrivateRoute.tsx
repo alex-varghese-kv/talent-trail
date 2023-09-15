@@ -1,8 +1,8 @@
-import { Navbar } from 'Components/Navbar/Navbar';
-import { TopNavbar } from 'Components/TopNavbar/TopNavbar';
 import React, { FC, Suspense, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navbar } from 'Components/Navbar/Navbar';
 import { pages } from 'config/pages';
+import { Route, Routes } from 'react-router-dom';
+import { TopNavbar } from 'Components/TopNavbar/TopNavbar';
 
 const PrivateRoute: FC = () => {
   const [showSideNav, setshowSideNav] = useState(false);

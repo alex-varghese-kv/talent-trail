@@ -1,6 +1,14 @@
 import React from "react";
+import { useGetJobs } from "service/hooks/jobs.hooks";
 
 const MyJobs = () => {
+  const { data: GetJobList } = useGetJobs({
+    variables: {
+      id: "1111",
+      
+    },
+  });
+  console.log("🚀 ~ file: MyJobs.tsx:6 ~ MyJobs ~ data:", GetJobList);
   return (
     <div className="bg-BG_GREEN h-screen text-left dashboard-body">
       <div className="flex justify-between mb-4 items-center">

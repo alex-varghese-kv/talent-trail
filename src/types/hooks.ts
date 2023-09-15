@@ -55,3 +55,5 @@ export interface UseQueryType<TData> {
 export interface useMutationType<TData, TVariables> {
   (config?: MutationHookOptions): MutationTuple<TData, TVariables>;
 }
+
+
