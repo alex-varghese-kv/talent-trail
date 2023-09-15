@@ -7,7 +7,7 @@ import {
 
 export const useAppApolloClient = () => {
   return new ApolloClient({
-    uri: "https://flyby-router-demo.herokuapp.com/",
+    uri: "https://187a-103-214-233-88.ngrok-free.app/talent-trail/api/graphql/",
     cache: new InMemoryCache(),
   });
 };
