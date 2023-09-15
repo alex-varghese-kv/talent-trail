@@ -13,7 +13,7 @@ export const navbarItems = [
   },
   {
     title: "Saved candidate",
-    path: pagePaths.createJob,
+    path: pagePaths.savedCandidate,
     icon: "/media/icon_6.70ec5244.svg",
   },
   {

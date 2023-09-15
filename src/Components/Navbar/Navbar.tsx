@@ -1,8 +1,8 @@
 import { FC, Fragment, ReactElement } from 'react';
 import cx from 'classnames';
-import { navbarItems } from './Navbar.config';
 import { Link, useLocation } from 'react-router-dom';
 import { pagePaths } from 'config/pages';
+import { navbarItems } from './Navbar.config';
 
 interface NavbarProps {
   setIsOpen(type: boolean): void;
@@ -22,9 +22,8 @@ export const Navbar: FC<NavbarProps> = ({ setIsOpen, isOpen }) => {
                 height="42"
                 decoding="async"
                 data-nimg="1"
-                style={{ color: 'transparent' }}
-                srcSet="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo_01.64e60fc1.png&amp;w=128&amp;q=75 1x, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo_01.64e60fc1.png&amp;w=256&amp;q=75 2x"
-                src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo_01.64e60fc1.png&amp;w=256&amp;q=75"
+                style={{ color: 'transparent', width: '150px' }}
+                src="/assets/logo.png"
               />
             </a>
             <button className="close-btn d-block d-md-none">
@@ -42,11 +41,12 @@ export const Navbar: FC<NavbarProps> = ({ setIsOpen, isOpen }) => {
                 data-nimg="1"
                 className="lazy-img"
                 style={{ color: 'transparent;height:auto' }}
-                srcSet="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar_03.f35eb58b.jpg&amp;w=96&amp;q=75 1x, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar_03.f35eb58b.jpg&amp;w=256&amp;q=75 2x"
-                src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar_03.f35eb58b.jpg&amp;w=256&amp;q=75"
+                src="/assets/john_honai.png"
               />
             </div>
-            <div className="user-name-data user-name text-center">John Doe</div>
+            <div className="user-name-data user-name text-center">
+              John Honai
+            </div>
           </div>
           <div
             className="flex flex-col justify-between"
@@ -92,7 +92,7 @@ export const Navbar: FC<NavbarProps> = ({ setIsOpen, isOpen }) => {
                   data-nimg="1"
                   className="lazy-img"
                   style={{ color: 'transparent' }}
-                  src="media/icon_9.69f19313.svg"
+                  src="/media/icon_9.69f19313.svg"
                 />
                 <span>Logout</span>
               </a>

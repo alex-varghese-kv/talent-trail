@@ -27854,7 +27854,7 @@ body.compensate-for-scrollbar {
   background: #f0f5f3;
   margin-left: 260px;
   border-radius: 50px 0 0 50px;
-  padding: 150px 55px 50px;
+  padding: 50px 55px 50px;
 }
 .dashboard-body .border-15 {
   border-radius: 15px;
@@ -31033,4 +31033,7 @@ img:focus-visible {
   .dashboard-body .user-avatar-setting .upload-btn {
     font-size: 14px;
   }
+}
+.vertical-timeline {
+  margin: 0 !important;
 }

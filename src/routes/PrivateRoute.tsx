@@ -14,7 +14,7 @@ const PrivateRoute: FC = () => {
         {/* <TopNavbar isOpen={showSideNav} setIsOpen={setshowSideNav} /> */}
         {/* <Navbar isOpen={showTopNav} setIsOpen={setshowTopNav} /> */}
         <div
-          className="flex-1 mt-14 relative  overflow-auto h-max-content "
+          className="flex-1 mt-14 relative h-max-content"
           id="modal-container"
         >
           <Suspense fallback={<div>Loading...</div>}>

@@ -3,6 +3,8 @@ import Header from "Components/Candidate/Header";
 import CandidateLanding from "Components/Candidate/CandidateLanding/CandidateLanding";
 import Search from "Components/Candidate/Search/Search";
 import { JobDetailsRow } from "Components/JobDetailsRow";
+import { LoginPage } from "Components/Login/LoginPage";
+import { useState } from "react";
 
 export const CandidateDashboard = () => {
   const jobListData = [
@@ -32,9 +34,11 @@ export const CandidateDashboard = () => {
       location: "USA,California",
     },
   ];
+  const [showLogin, setShowLogin] = useState(false);
   return (
     <div className="main-page-wrapper">
-      <Header />
+       <Header setShowLogin={setShowLogin} />
+       <LoginPage showLogin={showLogin} setShowLogin={setShowLogin} />
       <CandidateLanding />
       <section className="category-section-one position-relative mt-120 lg-mt-80">
         <div className="container">

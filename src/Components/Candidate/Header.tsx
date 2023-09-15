@@ -1,6 +1,10 @@
 import React from "react";
 
-const Header = () => {
+const Header = ({
+  setShowLogin,
+}: {
+  setShowLogin: (show: boolean) => void;
+}) => {
   return (
     <header className="theme-main-menu menu-overlay sticky-menu ">
       <div className="inner-content position-relative">
@@ -10,10 +14,10 @@ const Header = () => {
               <ul className="d-flex align-items-center style-none">
                 <li>
                   <a
-                    href="#"
-                    className="fw-500 text-white "
+                    className=" btn fw-500 text-white "
                     data-bs-toggle="modal"
                     data-bs-target="#loginModal"
+                    onClick={() => setShowLogin(true)}
                   >
                     Login
                   </a>
@@ -42,7 +46,7 @@ const Header = () => {
                   <li className="nav-item dropdown">
                     <a
                       className="nav-link dropdown-toggle !text-white"
-                      href="#"
+                      href="/home"
                       role="button"
                       data-bs-toggle="dropdown"
                       data-bs-auto-close="outside"
@@ -54,7 +58,7 @@ const Header = () => {
                   <li className="nav-item dropdown ">
                     <a
                       className="nav-link dropdown-toggle !text-white"
-                      href="#"
+                      href="/jobList"
                       role="button"
                       data-bs-toggle="dropdown"
                       data-bs-auto-close="outside"
@@ -66,7 +70,7 @@ const Header = () => {
                   <li className="nav-item dropdown ">
                     <a
                       className="nav-link dropdown-toggle !text-white"
-                      href="#"
+                      href="/about"
                       role="button"
                       data-bs-toggle="dropdown"
                       data-bs-auto-close="outside"
@@ -115,3 +119,6 @@ const Header = () => {
 };
 
 export default Header;
+function useState(arg0: boolean): [any, any] {
+  throw new Error("Function not implemented.");
+}
