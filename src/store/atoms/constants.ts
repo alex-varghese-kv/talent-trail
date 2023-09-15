@@ -3,5 +3,7 @@ export enum ATOMS {
 }
 
 export const defaultLoginedDetails = {
-  name: "",
+  id: 0,
+  email: "String",
+  groups: [],
 };

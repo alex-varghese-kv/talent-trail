@@ -24,5 +24,7 @@ export interface LoginMutation {
   >;
 }
 export interface LoginedUser {
-  name: string;
+  id: Number;
+  email: String;
+  groups: String[];
 }

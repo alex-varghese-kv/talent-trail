@@ -1,4 +1,10 @@
+import { pagePaths } from "config/pages";
 import { FC } from "react";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
+import { LoggedInUserDetails, PasswordLogin } from "service/hooks/auth.hooks";
+import { loginedUserDetails } from "store/atoms/authAtom";
 
 export const LoginPage: FC<{
   showLogin: boolean;
@@ -10,6 +16,43 @@ export const LoginPage: FC<{
   showLogin: boolean;
   setShowLogin: (show: boolean) => void;
 }) => {
+  const [submitLogin] = PasswordLogin({
+    fetchPolicy: "network-only",
+  });
+  const [fetchLoggedUserDetails] = LoggedInUserDetails({
+    fetchPolicy: "network-only",
+  });
+  const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data: any) => {
+    console.log("data", data);
+    submitLogin({
+      variables: {
+        ...data,
+      },
+      onCompleted: (data: any) => {
+        console.log(">>>", data.login);
+
+        localStorage.setItem("token", data.login);
+        getUserDetails();
+      },
+    });
+  };
+  const setLoggedinDetails = useSetRecoilState(loginedUserDetails);
+  const getUserDetails = () => {
+    fetchLoggedUserDetails({
+      onCompleted: (data: any) => {
+        console.log("LoginData>>>>", data);
+        setLoggedinDetails(data);
+      },
+    });
+  };
+
   return showLogin ? (
     <div
       className="modal fade show !block bg-black/[.4]"
@@ -35,7 +78,7 @@ export const LoginPage: FC<{
               </p>
             </div>
             <div className="form-wrapper m-auto">
-              <form className="mt-10">
+              <form className="mt-10" onSubmit={handleSubmit(onSubmit)}>
                 <div className="row">
                   <div className="col-12">
                     <div className="input-group-meta position-relative mb-25">
@@ -43,7 +86,7 @@ export const LoginPage: FC<{
                       <input
                         type="email"
                         placeholder="james@example.com"
-                        name="email"
+                        {...register("email")}
                       />
                       <div className="help-block with-errors">
                         <div style={{ color: "red" }}></div>
@@ -57,7 +100,7 @@ export const LoginPage: FC<{
                         type="password"
                         placeholder="Enter Password"
                         className="pass_log_id"
-                        name="password"
+                        {...register("password")}
                       />
                       <span className="placeholder_icon">
                         <span className="passVicon">
