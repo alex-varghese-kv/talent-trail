@@ -29,3 +29,7 @@ export interface GetJobs {
 export interface GetCandidates {
   (config?: QueryHookOptions): QueryResult<GetJobList>;
 }
+
+export interface GetCandidateQuery {
+  (config?: QueryHookOptions): QueryResult<any>;
+}

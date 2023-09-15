@@ -1,7 +1,7 @@
-import { Rating } from "@smastrom/react-rating";
+import { Rating } from '@smastrom/react-rating';
 
-import "@smastrom/react-rating/style.css";
-import { FC, useState } from "react";
+import '@smastrom/react-rating/style.css';
+import { FC, useState } from 'react';
 
 interface Props {
   label: string;

@@ -5,3 +5,12 @@ export enum ATOMS {
 export const defaultLoginedDetails = {
   name: "",
 };
+export const defaultCandidateDetails = {
+  name: "",
+  // age: 0,
+  phone: '',
+  email: '',
+  skills :[],
+  overview: ''
+};
+

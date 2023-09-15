@@ -14,7 +14,7 @@ const defaultHeaders: APIRequestHeaders = {
 export const callApi: CallApi = async ({
   payload,
   headers,
-  onUploadProgress,
+  // onUploadProgress,
 }) => {
   const apiParams: AxiosRequestConfig = {
     ...payload,
@@ -22,7 +22,7 @@ export const callApi: CallApi = async ({
       ...defaultHeaders,
       ...headers,
     },
-    onUploadProgress,
+    // onUploadProgress,
   };
   // Fire API request
   const apiResponse: AxiosResponse = await Axios(apiParams);
