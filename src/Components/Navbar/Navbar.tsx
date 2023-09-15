@@ -2,6 +2,7 @@ import { FC, Fragment, ReactElement } from 'react';
 import cx from 'classnames';
 import { navbarItems } from './Navbar.config';
 import { Link, useLocation } from 'react-router-dom';
+import { pagePaths } from 'config/pages';
 
 interface NavbarProps {
   setIsOpen(type: boolean): void;
@@ -43,7 +44,7 @@ export const Navbar: FC<NavbarProps> = ({ setIsOpen, isOpen }) => {
 
   return (
     <>
-      <div
+      {/* <div
         className={cx(
           'absolute md:static md:z-5 inset-0 transform ease-in-out h-screen overflow-hidden z-50 md:border-r-1 md:border-CORE_GRAY',
           {
@@ -64,7 +65,313 @@ export const Navbar: FC<NavbarProps> = ({ setIsOpen, isOpen }) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+      <aside className="dash-aside-navbar ">
+        <div className="position-relative">
+          <div className="logo text-md-center d-md-block d-flex align-items-center justify-content-between">
+            <a href="/admin">
+              <img
+                alt="logo"
+                width="119"
+                height="42"
+                decoding="async"
+                data-nimg="1"
+                style={{ color: 'transparent' }}
+                srcSet="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo_01.64e60fc1.png&amp;w=128&amp;q=75 1x, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo_01.64e60fc1.png&amp;w=256&amp;q=75 2x"
+                src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo_01.64e60fc1.png&amp;w=256&amp;q=75"
+              />
+            </a>
+            <button className="close-btn d-block d-md-none">
+              <i className="bi bi-x-lg"></i>
+            </button>
+          </div>
+          <div className="user-data">
+            <div className="user-avatar online position-relative rounded-circle">
+              <img
+                alt="avatar"
+                loading="lazy"
+                width="76"
+                height="76"
+                decoding="async"
+                data-nimg="1"
+                className="lazy-img"
+                style={{ color: 'transparent;height:auto' }}
+                srcSet="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar_03.f35eb58b.jpg&amp;w=96&amp;q=75 1x, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar_03.f35eb58b.jpg&amp;w=256&amp;q=75 2x"
+                src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar_03.f35eb58b.jpg&amp;w=256&amp;q=75"
+              />
+            </div>
+            <div className="user-name-data">
+              <button
+                className="user-name dropdown-toggle"
+                type="button"
+                id="profile-dropdown"
+                data-bs-toggle="dropdown"
+                data-bs-auto-close="outside"
+                aria-expanded="false"
+              >
+                John Doe
+              </button>
+              <ul className="dropdown-menu" aria-labelledby="profile-dropdown">
+                <li>
+                  <a
+                    className="dropdown-item d-flex align-items-center"
+                    href="/dashboard/employ-dashboard/profile"
+                  >
+                    <img
+                      alt="icon"
+                      loading="lazy"
+                      width="18"
+                      height="22"
+                      decoding="async"
+                      data-nimg="1"
+                      className="lazy-img"
+                      style={{ color: 'transparent' }}
+                      src="/_next/static/media/icon_23.569a9456.svg"
+                    />
+                    <span className="ms-2 ps-1">Profile</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="dropdown-item d-flex align-items-center"
+                    href="/dashboard/employ-dashboard/profile"
+                  >
+                    <img
+                      alt="icon"
+                      loading="lazy"
+                      width="21"
+                      height="22"
+                      decoding="async"
+                      data-nimg="1"
+                      className="lazy-img"
+                      style={{ color: 'transparent' }}
+                      src="/_next/static/media/icon_24.0ace9f1a.svg"
+                    />
+                    <span className="ms-2 ps-1">Account Settings</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="dropdown-item d-flex align-items-center"
+                    href="#"
+                  >
+                    <img
+                      alt="icon"
+                      loading="lazy"
+                      width="19"
+                      height="23"
+                      decoding="async"
+                      data-nimg="1"
+                      className="lazy-img"
+                      style={{ color: 'transparent' }}
+                      src="/_next/static/media/icon_25.b0559e8f.svg"
+                    />
+                    <span className="ms-2 ps-1">Notification</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <nav className="dasboard-main-nav">
+            <ul className="style-none">
+              <li>
+                <a
+                  className="d-flex w-100 align-items-center "
+                  href="/dashboard/employ-dashboard"
+                >
+                  <img
+                    alt=""
+                    loading="lazy"
+                    width="20"
+                    height="20"
+                    decoding="async"
+                    data-nimg="1"
+                    className="lazy-img"
+                    style={{ color: 'transparent' }}
+                    src="/_next/static/media/icon_1.2012e511.svg"
+                  />
+                  <span>Dashboard</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  className="d-flex w-100 align-items-center "
+                  href="/dashboard/employ-dashboard/profile"
+                >
+                  <img
+                    alt=""
+                    loading="lazy"
+                    width="20"
+                    height="25"
+                    decoding="async"
+                    data-nimg="1"
+                    className="lazy-img"
+                    style={{ color: 'transparent' }}
+                    src="/_next/static/media/icon_2.bb2a8c78.svg"
+                  />
+                  <span>My Profile</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  className="d-flex w-100 align-items-center "
+                  href={pagePaths.createJob}
+                >
+                  <img
+                    alt=""
+                    loading="lazy"
+                    width="20"
+                    height="22"
+                    decoding="async"
+                    data-nimg="1"
+                    className="lazy-img"
+                    style={{ color: 'transparent' }}
+                    src="/_next/static/media/icon_3.1dfe15d1.svg"
+                  />
+                  <span>My Jobs</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  className="d-flex w-100 align-items-center "
+                  href="/dashboard/employ-dashboard/messages"
+                >
+                  <img
+                    alt=""
+                    loading="lazy"
+                    width="21"
+                    height="19"
+                    decoding="async"
+                    data-nimg="1"
+                    className="lazy-img"
+                    style={{ color: 'transparent' }}
+                    src="/_next/static/media/icon_4.7fb6e150.svg"
+                  />
+                  <span>Messages</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  className="d-flex w-100 align-items-center active"
+                  href="/dashboard/employ-dashboard/submit-job"
+                >
+                  <img
+                    alt=""
+                    loading="lazy"
+                    width="20"
+                    height="22"
+                    decoding="async"
+                    data-nimg="1"
+                    className="lazy-img"
+                    style={{ color: 'transparent' }}
+                    src="/_next/static/media/icon_39_active.084f5967.svg"
+                  />
+                  <span>Submit Job</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  className="d-flex w-100 align-items-center "
+                  href="/dashboard/employ-dashboard/saved-candidate"
+                >
+                  <img
+                    alt=""
+                    loading="lazy"
+                    width="18"
+                    height="22"
+                    decoding="async"
+                    data-nimg="1"
+                    className="lazy-img"
+                    style={{ color: 'transparent' }}
+                    src="/_next/static/media/icon_6.70ec5244.svg"
+                  />
+                  <span>Saved Candidate</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  className="d-flex w-100 align-items-center "
+                  href="/dashboard/employ-dashboard/membership"
+                >
+                  <img
+                    alt=""
+                    loading="lazy"
+                    width="22"
+                    height="22"
+                    decoding="async"
+                    data-nimg="1"
+                    className="lazy-img"
+                    style={{ color: 'transparent' }}
+                    src="/_next/static/media/icon_40.5ae84fe9.svg"
+                  />
+                  <span>Membership</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  className="d-flex w-100 align-items-center "
+                  href="/dashboard/employ-dashboard/setting"
+                >
+                  <img
+                    alt=""
+                    loading="lazy"
+                    width="23"
+                    height="25"
+                    decoding="async"
+                    data-nimg="1"
+                    className="lazy-img"
+                    style={{ color: 'transparent' }}
+                    src="/_next/static/media/icon_7.9db14e45.svg"
+                  />
+                  <span>Account Settings</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="d-flex w-100 align-items-center"
+                  data-bs-toggle="modal"
+                  data-bs-target="#deleteModal"
+                >
+                  <img
+                    alt="icon"
+                    loading="lazy"
+                    width="21"
+                    height="23"
+                    decoding="async"
+                    data-nimg="1"
+                    className="lazy-img"
+                    style={{ color: 'transparent' }}
+                    src="/_next/static/media/icon_8.1d18804d.svg"
+                  />
+                  <span>Delete Account</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div className="profile-complete-status">
+            <div className="progress-value fw-500">87%</div>
+            <div className="progress-line position-relative">
+              <div className="inner-line" style={{ width: '80%' }}></div>
+            </div>
+            <p>Profile Complete</p>
+          </div>
+          <a href="#" className="d-flex w-100 align-items-center logout-btn">
+            <img
+              alt="icon"
+              loading="lazy"
+              width="23"
+              height="22"
+              decoding="async"
+              data-nimg="1"
+              className="lazy-img"
+              style={{ color: 'transparent' }}
+              src="/_next/static/media/icon_9.69f19313.svg"
+            />
+            <span>Logout</span>
+          </a>
+        </div>
+      </aside>
     </>
   );
 };

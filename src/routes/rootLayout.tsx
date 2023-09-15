@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { pagePaths } from 'config/pages';
 
 import PrivateRoutes from './PrivateRoute';
+import CreateJob from 'Containers/CreateJob';
 import { CandidateDashboard } from 'Containers/CandidateDashboard/CandidateDashboard';
 
 const Login = lazy(() => import('Containers/Login'));
