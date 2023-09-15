@@ -1,9 +1,10 @@
-import { CandidateAboutUs } from 'Containers/CandidateAboutUs';
-import { CandidateDashboard } from 'Containers/CandidateDashboard/CandidateDashboard';
-import { lazy, ReactElement } from 'react';
+import { CandidateAboutUs } from "Containers/CandidateAboutUs";
+import { CandidateDashboard } from "Containers/CandidateDashboard/CandidateDashboard";
+import { lazy, ReactElement } from "react";
 
-const Login = lazy(() => import('../Containers/Login'));
-const CreateJob = lazy(() => import('../Containers/CreateJob'));
+const Login = lazy(() => import("../Containers/Login"));
+const CreateJob = lazy(() => import("../Containers/CreateJob"));
+const MyJobs = lazy(() => import("../Containers/Staff/MyJobs/MyJobs"));
 
 interface Page {
   title: string;
@@ -18,36 +19,41 @@ interface PagePaths {
 }
 
 export const pagePaths: PagePaths = {
-  login: '/login',
-  home: '/home',
-  about: '/about',
-  createJob: '/admin/post-a-new-job',
-  savedCandidate: '/admin/saved-candidate',
+  login: "/login",
+  home: "/home",
+  about: "/about",
+  createJob: "/admin/post-a-new-job",
+  myJobs: "/admin/my-jobs",
+  savedCandidate: "/admin/saved-candidate",
 };
 
 export const pages: Array<Page> = [
   {
-    title: 'Login',
+    title: "Login",
     path: pagePaths.dashboard,
     Component: <Login />,
     redirectTo: pagePaths.patientList,
   },
   {
-    title: 'Home',
+    title: "Home",
     path: pagePaths.home,
     Component: <CandidateDashboard />,
   },
 
   {
-    title: 'About us',
+    title: "About us",
     path: pagePaths.about,
     Component: <CandidateAboutUs />,
   },
   {
-    title: 'Post a New Job',
+    title: "My Jobs",
+    path: pagePaths.myJobs,
+    Component: <MyJobs />,
+  },
+  {
+    title: "Post a New Job",
     path: pagePaths.createJob,
     Component: <CreateJob />,
-    // redirectTo: pagePaths.cre,
   },
   // {
   //   title: 'Saved candidates',
