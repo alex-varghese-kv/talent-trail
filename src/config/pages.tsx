@@ -1,3 +1,5 @@
+import { CandidateAboutUs } from "Containers/CandidateAboutUs";
+import { CandidateDashboard } from "Containers/CandidateDashboard";
 import { lazy, ReactElement } from "react";
 
 const Login = lazy(() => import("../Containers/Login"));
@@ -16,6 +18,8 @@ interface PagePaths {
 
 export const pagePaths: PagePaths = {
   login: "/login",
+  home: "/home",
+  about: "/about"
 };
 
 export const pages: Array<Page> = [
@@ -24,5 +28,16 @@ export const pages: Array<Page> = [
     path: pagePaths.dashboard,
     Component: <Login />,
     redirectTo: pagePaths.patientList,
+  },
+  {
+    title: "Home",
+    path: pagePaths.home,
+    Component: <CandidateDashboard />,
+  },
+
+  {
+    title: "About us",
+    path: pagePaths.about,
+    Component: <CandidateAboutUs />,
   },
 ];
