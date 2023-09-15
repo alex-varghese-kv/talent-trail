@@ -15,6 +15,9 @@ const InterviewTimeLine = lazy(
 const CandidateResume = lazy(
   () => import('../Containers/CandidateResume/CandidateResume')
 );
+const InterviewSettings = lazy(
+  () => import('../Containers/interviewSettings/interviewSettings')
+);
 
 interface Page {
   title: string;
@@ -41,6 +44,7 @@ export const pagePaths: PagePaths = {
   jobDetails: '/jobDetails',
   profile: '/admin/profile',
   resume: '/resume',
+  interviewSettings: '/admin/interview-settings',
 };
 
 export const pages: Array<Page> = [
@@ -105,5 +109,10 @@ export const pages: Array<Page> = [
     title: 'My resume',
     path: pagePaths.resume,
     Component: <CandidateResume />,
+  },
+  {
+    title: 'Interview settings',
+    path: pagePaths.interviewSettings,
+    Component: <InterviewSettings />,
   },
 ];

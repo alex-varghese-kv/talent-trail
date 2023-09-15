@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 import {
   VerticalTimeline,
   VerticalTimelineElement,
-} from "react-vertical-timeline-component";
+} from 'react-vertical-timeline-component';
 
-import "react-vertical-timeline-component/style.min.css";
-import "react-vertical-timeline-component/style.min.css";
-import events from "./event.json";
+import 'react-vertical-timeline-component/style.min.css';
+import 'react-vertical-timeline-component/style.min.css';
+import events from './event.json';
 const TimeLine = () => {
   //   const getTImeLineDetails = (status: string, actionItem:) => {};
   return (
@@ -15,7 +15,7 @@ const TimeLine = () => {
         {events.map((event) => (
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
-            iconStyle={{ background: "rgb(49,121,90)", color: "#fff" }}
+            iconStyle={{ background: 'rgb(49,121,90)', color: '#fff' }}
           >
             <div className="flex w-full flex-col">
               <div className="flex justify-between w-full border-b-4 ">
