@@ -1,5 +1,7 @@
 import Header from "Components/Candidate/Header";
 import { JobDetailsRow } from "Components/JobDetailsRow";
+import { LoginPage } from "Components/Login/LoginPage";
+import { useState } from "react";
 
 export const CandidateJobList = () => {
   const jobListData = [
@@ -34,156 +36,13 @@ export const CandidateJobList = () => {
       salary: "$900 / Monthly ",
     },
   ];
+
+  const [showLogin, setShowLogin] = useState(false);
   return (
     <div className="main-page-wrapper">
-      <Header />
-      <div
-        className="modal fade"
-        id="loginModal"
-        tabIndex={-1}
-        aria-hidden="true"
-      >
-        <div className="modal-dialog modal-fullscreen modal-dialog-centered">
-          <div className="container">
-            <div className="user-data-form modal-content">
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-              <div className="text-center">
-                <h2>Hi, Welcome Back!</h2>
-                <p>
-                  Still do not have an account?
-                  <a href="register.html">Sign up</a>
-                </p>
-              </div>
-              <div className="form-wrapper m-auto">
-                <form className="mt-10">
-                  <div className="row">
-                    <div className="col-12">
-                      <div className="input-group-meta position-relative mb-25">
-                        <label>Email*</label>
-                        <input
-                          type="email"
-                          placeholder="james@example.com"
-                          name="email"
-                        />
-                        <div className="help-block with-errors">
-                          <div style={{ color: "red" }}></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-12">
-                      <div className="input-group-meta position-relative mb-20">
-                        <label>Password*</label>
-                        <input
-                          type="password"
-                          placeholder="Enter Password"
-                          className="pass_log_id"
-                          name="password"
-                        />
-                        <span className="placeholder_icon">
-                          <span className="passVicon">
-                            <img
-                              alt="icon"
-                              loading="lazy"
-                              width="24"
-                              height="16"
-                              decoding="async"
-                              data-nimg="1"
-                              style={{ color: "transparent" }}
-                              src="src/assets/static/media/icon_60.3d29845b.svg"
-                            />
-                          </span>
-                        </span>
-                        <div className="help-block with-errors">
-                          <div style={{ color: "red" }}></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-12">
-                      <div className="agreement-checkbox d-flex justify-content-between align-items-center">
-                        <div>
-                          <input type="checkbox" id="remember" />
-                          <label htmlFor="remember">Keep me logged in</label>
-                        </div>
-                        <a href="#">Forget Password?</a>
-                      </div>
-                    </div>
-                    <div className="col-12">
-                      <button
-                        type="submit"
-                        className="btn-eleven fw-500 tran3s d-block mt-20"
-                      >
-                        Login
-                      </button>
-                    </div>
-                  </div>
-                </form>
-                <div className="d-flex align-items-center mt-30 mb-10">
-                  <div className="line"></div>
-                  <span className="pe-3 ps-3">OR</span>
-                  <div className="line"></div>
-                </div>
-                <div className="row">
-                  <div className="col-md-6">
-                    <a
-                      href="#"
-                      className="social-use-btn d-flex align-items-center justify-content-center tran3s w-100 mt-10"
-                    >
-                      <img
-                        alt="google-img"
-                        loading="lazy"
-                        width="24"
-                        height="25"
-                        decoding="async"
-                        data-nimg="1"
-                        style={{ color: "transparent" }}
-                        srcSet="
-                          /src/assets/image?url=%2F_next%2Fstatic%2Fmedia%2Fgoogle.7000043b.png&amp;w=32&amp;q=75 1x,
-                          /src/assets/image?url=%2F_next%2Fstatic%2Fmedia%2Fgoogle.7000043b.png&amp;w=48&amp;q=75 2x
-                        "
-                        src="src/assets/google9313.png?url=%2F_next%2Fstatic%2Fmedia%2Fgoogle.7000043b.png&amp;w=48&amp;q=75"
-                      />
-                      <span className="ps-2">Login with Google</span>
-                    </a>
-                  </div>
-                  <div className="col-md-6">
-                    <a
-                      href="#"
-                      className="social-use-btn d-flex align-items-center justify-content-center tran3s w-100 mt-10"
-                    >
-                      <img
-                        alt="facebook-img"
-                        loading="lazy"
-                        width="22"
-                        height="23"
-                        decoding="async"
-                        data-nimg="1"
-                        style={{ color: "transparent" }}
-                        srcSet="
-                          /src/assets/image?url=%2F_next%2Fstatic%2Fmedia%2Ffacebook.0b9411a9.png&amp;w=32&amp;q=75 1x,
-                          /src/assets/image?url=%2F_next%2Fstatic%2Fmedia%2Ffacebook.0b9411a9.png&amp;w=48&amp;q=75 2x
-                        "
-                        src="src/assets/facebookb710.png?url=%2F_next%2Fstatic%2Fmedia%2Ffacebook.0b9411a9.png&amp;w=48&amp;q=75"
-                      />
-                      <span className="ps-2">Login with Facebook</span>
-                    </a>
-                  </div>
-                </div>
-                <p className="text-center mt-10">
-                  Do not have an account?
-                  <a className="fw-500" href="register.html">
-                    Sign up
-                  </a>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Header setShowLogin={setShowLogin} />
+      <LoginPage showLogin={showLogin} setShowLogin={setShowLogin} />
+
       <div className="inner-banner-one position-relative">
         <div className="container">
           <div className="position-relative">

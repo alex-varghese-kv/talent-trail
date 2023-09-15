@@ -28,6 +28,7 @@ export const pagePaths: PagePaths = {
   myJobs: "/admin/my-jobs",
   savedCandidate: "/admin/saved-candidate",
   jobList: "jobList",
+  register: "register"
 };
 
 export const pages: Array<Page> = [
