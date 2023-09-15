@@ -1,6 +1,8 @@
-import { FC } from "react";
+import { FC, Fragment, ReactElement } from "react";
+import cx from "classnames";
+import { Link, useLocation } from "react-router-dom";
+import { pagePaths } from "config/pages";
 import { navbarItems } from "./Navbar.config";
-import { Link } from "react-router-dom";
 
 interface NavbarProps {
   setIsOpen(type: boolean): void;

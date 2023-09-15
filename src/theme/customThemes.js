@@ -1,7 +1,8 @@
 const colors = {
   DARK_BLUE_2: '#2388B5',
   BG_GREEN : '#F0F5F3',
-  DARK_GREEN: '#244034'
+  DARK_GREEN: '#244034',
+  YELLOW_GREEN: '#d2f34c'
 
   
 };

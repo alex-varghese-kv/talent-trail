@@ -1,16 +1,18 @@
+import React, { FC, Suspense, useState } from "react";
 import { Navbar } from "Components/Navbar/Navbar";
 import { pages } from "config/pages";
-import React, { FC, Suspense, useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import { TopNavbar } from "Components/TopNavbar/TopNavbar";
 
 const PrivateRoute: FC = () => {
-  const [showSideNav, setshowSideNav] = useState(true);
+  const [showSideNav, setshowSideNav] = useState(false);
+  const [showTopNav, setshowTopNav] = useState(true);
 
   return (
     <div>
-      <div className="max-h-screen w-full">Header</div>
       <div className="h-screen w-full flex">
-        <Navbar isOpen={showSideNav} setIsOpen={setshowSideNav} />
+        {/* <TopNavbar isOpen={showSideNav} setIsOpen={setshowSideNav} /> */}
+        <Navbar isOpen={showTopNav} setIsOpen={setshowTopNav} />
         <div
           className="flex-1 mt-14 relative h-max-content"
           id="modal-container"
