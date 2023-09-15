@@ -1,10 +1,11 @@
 import { FC, Fragment, ReactElement } from "react";
 import cx from "classnames";
-import { Link, useLocation } from "react-router-dom";
+import { Link, redirect, useLocation } from "react-router-dom";
 import { pagePaths } from "config/pages";
 import { navbarItems } from "./Navbar.config";
 import { useResetRecoilState } from "recoil";
 import { loginedUserDetails } from "store/atoms/authAtom";
+import { useNavigate } from "react-router-dom";
 
 interface NavbarProps {
   setIsOpen(type: boolean): void;
@@ -12,9 +13,12 @@ interface NavbarProps {
 }
 
 export const Navbar: FC<NavbarProps> = ({ setIsOpen, isOpen }) => {
+  const navigate = useNavigate();
   const filterReset = useResetRecoilState(loginedUserDetails);
   const handleLogout = () => {
     filterReset();
+    localStorage.clear();
+    navigate("/home");
   };
 
   return (
@@ -51,9 +55,7 @@ export const Navbar: FC<NavbarProps> = ({ setIsOpen, isOpen }) => {
                 src="/assets/john_honai.png"
               />
             </div>
-            <div className="user-name-data user-name text-center">
-              John Honai
-            </div>
+            <div className="user-name-data user-name text-center">John Doe</div>
           </div>
           <div
             className="flex flex-col justify-between"

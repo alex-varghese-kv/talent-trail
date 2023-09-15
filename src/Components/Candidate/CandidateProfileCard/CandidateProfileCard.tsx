@@ -1,10 +1,24 @@
 import ActionButton from "Components/ActionButton/ActionButton";
 import { pagePaths } from "config/pages";
-import { Link } from "react-router-dom";
+import { FC } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
+import { interviewDetails } from "store/atoms/authAtom";
+import { Candidate } from "types/jobs";
 
-const CandidateProfileCard = () => {
+interface Prop {
+  candidate?: Candidate;
+  application?: any;
+}
+const CandidateProfileCard: FC<Prop> = ({ candidate, application }) => {
+  const setInterviewDetails = useSetRecoilState(interviewDetails);
+  let navigate = useNavigate();
+  const handleOnClick = () => {
+    setInterviewDetails(application);
+    navigate(pagePaths.interviewTimeLine);
+  };
   return (
-    <Link to={pagePaths.interviewTimeLine} className="w-full cursor-pointer">
+    <button onClick={handleOnClick} className="w-full cursor-pointer">
       <div className="candidate-profile-card list-layout border-0 mb-25 w-full">
         <div className="d-flex">
           <div className="cadidate-avatar  position-relative d-block me-auto ms-auto">
@@ -25,10 +39,10 @@ const CandidateProfileCard = () => {
           <div className="right-side">
             <div className="row gx-1 align-items-center">
               <div className="col-xl-3">
-                <div className="position-relative">
+                <div className="position-relative float-left">
                   <h4 className="candidate-name mb-0">
                     <a href="#" className="tran3s">
-                      Julia Ark
+                      {candidate?.name}
                     </a>
                   </h4>
                   <div className="candidate-post">Graphic Designer</div>
@@ -73,7 +87,7 @@ const CandidateProfileCard = () => {
           </div>
         </div>
       </div>
-    </Link>
+    </button>
   );
 };
 

@@ -25,8 +25,8 @@ const GET_JOB = gql`
 `;
 
 const GET_CANDIDATES = gql`
-  query ($id: ID!) {
-    getCandidate(id: $id) {
+  query {
+    getCandidates {
       id
       name
       age
@@ -37,4 +37,23 @@ const GET_CANDIDATES = gql`
   }
 `;
 
-export { GET_JOBS, GET_CANDIDATES };
+const GET_APPLICATION = gql`
+  query {
+    findApplications {
+      id
+      timeline
+      job {
+        title
+      }
+      candidate {
+        id
+        name
+        age
+        email
+        phone
+      }
+    }
+  }
+`;
+
+export { GET_JOBS, GET_CANDIDATES, GET_APPLICATION };

@@ -7,3 +7,18 @@ export const defaultLoginedDetails = {
   email: "String",
   groups: [],
 };
+
+export const defaultApplicationData = {
+  id: 0,
+  timeline: [],
+  job: {
+    title: "",
+  },
+  candidate: {
+    id: "",
+    name: "",
+    age: 0,
+    email: "",
+    phone: "",
+  },
+};

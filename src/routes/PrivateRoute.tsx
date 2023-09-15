@@ -1,13 +1,16 @@
 import React, { FC, Suspense, useState } from "react";
 import { Navbar } from "Components/Navbar/Navbar";
 import { pages } from "config/pages";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, redirect } from "react-router-dom";
 import { TopNavbar } from "Components/TopNavbar/TopNavbar";
 
-const PrivateRoute: FC = () => {
+const PrivateRoute: FC = (): any => {
   const [showSideNav, setshowSideNav] = useState(false);
   const [showTopNav, setshowTopNav] = useState(true);
-
+  const token = localStorage.getItem("token");
+  if (!token) {
+    // return redirect("/login");
+  }
   return (
     <div>
       <div className="h-screen w-full flex">
