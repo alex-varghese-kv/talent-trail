@@ -2,6 +2,7 @@ import Header from "Components/Candidate/Header";
 import { JobDetailsRow } from "Components/JobDetailsRow";
 import { LoginPage } from "Components/Login/LoginPage";
 import { useState } from "react";
+import { useGetJobs } from "service/hooks/jobs.hooks";
 
 export const CandidateJobList = () => {
   const jobListData = [
@@ -36,6 +37,14 @@ export const CandidateJobList = () => {
       salary: "$900 / Monthly ",
     },
   ];
+  const [filters, setFilters] = useState([]);
+
+  const { data, loading } = useGetJobs({
+    fetchPolicy: "network-only",
+    variables: {
+      filter: { ...filters },
+    },
+  });
 
   const [showLogin, setShowLogin] = useState(false);
   return (
@@ -600,14 +609,15 @@ export const CandidateJobList = () => {
                   </div>
                 </div>
                 <div className="accordion-box list-style show">
-                  {jobListData.map((job) => (
-                    <JobDetailsRow
-                      roleDesc={job?.roleDesc}
-                      date={job?.date}
-                      location={job?.location}
-                      salary={job?.salary}
-                    />
-                  ))}
+                  {data?.getJobs?.length
+                    ? data?.getJobs?.map((job) => (
+                        <JobDetailsRow
+                          key={job?.id}
+                          roleDesc={job?.description}
+                          location={job?.location}
+                        />
+                      ))
+                    : `No jobs available`}
                 </div>
                 <div className="accordion-box grid-style">
                   <div className="row"></div>

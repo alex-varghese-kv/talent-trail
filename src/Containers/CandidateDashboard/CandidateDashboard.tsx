@@ -5,6 +5,7 @@ import Search from "Components/Candidate/Search/Search";
 import { JobDetailsRow } from "Components/JobDetailsRow";
 import { LoginPage } from "Components/Login/LoginPage";
 import { useState } from "react";
+import { useGetJobs } from "service/hooks/jobs.hooks";
 import { Link } from "react-router-dom";
 import { pagePaths } from "config/pages";
 
@@ -37,6 +38,10 @@ export const CandidateDashboard = () => {
     },
   ];
   const [showLogin, setShowLogin] = useState(false);
+
+  const { data, loading } = useGetJobs({
+    fetchPolicy: "network-only",
+  });
   return (
     <div className="main-page-wrapper">
       <Header setShowLogin={setShowLogin} />
@@ -335,13 +340,15 @@ export const CandidateDashboard = () => {
             </div>
           </div>
           <div className="job-listing-wrapper border-wrapper mt-80 lg-mt-40 wow fadeInUp">
-            {jobListData.map((job) => (
-              <JobDetailsRow
-                roleDesc={job?.roleDesc}
-                date={job?.date}
-                location={job?.location}
-              />
-            ))}
+            {data?.getJobs?.length
+              ? data?.getJobs?.map((job) => (
+                  <JobDetailsRow
+                    key={job?.id}
+                    roleDesc={job?.description}
+                    location={job?.location}
+                  />
+                ))
+              : `No jobs available`}
           </div>
           <div className="text-center mt-40 d-lg-none">
             <a className="btn-six" href="job-list-v1.html">
