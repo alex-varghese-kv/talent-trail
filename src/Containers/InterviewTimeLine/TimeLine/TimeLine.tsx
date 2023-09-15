@@ -8,6 +8,7 @@ import "react-vertical-timeline-component/style.min.css";
 import "react-vertical-timeline-component/style.min.css";
 import events from "./event.json";
 const TimeLine = () => {
+  //   const getTImeLineDetails = (status: string, actionItem:) => {};
   return (
     <div className="App">
       <VerticalTimeline layout="1-column-left">
