@@ -8,7 +8,7 @@ interface Jobs {
   info: any;
 }
 export interface GetJobList {
-  getJob: Jobs[];
+  getJobs: Jobs[];
 }
 
 interface Candidate {

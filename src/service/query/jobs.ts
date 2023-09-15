@@ -2,11 +2,14 @@ import { gql } from "@apollo/client";
 
 const GET_JOBS = gql`
   query {
-    getJob {
+    getJobs {
       id
       title
       description
-      location
+      location{
+        country
+        state
+      }
       info
     }
   }
