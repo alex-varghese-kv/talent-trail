@@ -36,6 +36,7 @@ export const UseGraphQlQuery: UseGraphQlQueryType = (query, config) => {
 };
 
 export const UseGraphQlMutation: UseGraphQlMutationType = (query, config) => {
+  console.log("config", config);
   return useMutation(query, {
     ...queryCallbacks(),
     ...config,

@@ -6,7 +6,7 @@ const SavedCandidate = () => {
     <div className="bg-BG_GREEN h-screen text-left dashboard-body">
       <div className="flex justify-between mb-4 items-center">
         <h2 className="main-title text-DARK_GREEN text-left">
-          Saved Candidates
+          Applied Candidates
         </h2>
       </div>
       <div className="flex ms-auto xs-mt-30 w-full">

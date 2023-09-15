@@ -1,7 +1,43 @@
 import React, { FC, useState } from "react";
 import cx from "classnames";
+
+import { useNavigate } from "react-router";
+import { pagePaths } from "config/pages";
+import { useForm } from "react-hook-form";
+import {  SignUp } from "service/hooks/auth.hooks";
 export const RegisterPage: FC = () => {
   const [registerType, setRegisterType] = useState("emp");
+  const [submitSignup] = SignUp({
+    fetchPolicy: "network-only",
+  });
+  const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data: any) => {
+    const submitData = {
+      name: data?.name,
+      age: Number(data?.age),
+      email: data?.email,
+      phone: data?.phone,
+      password: data?.password,
+    };
+    console.log("data", submitData, data);
+    submitSignup({
+      variables: {
+        ...submitData,
+      },
+      onCompleted: (data: any) => {
+        console.log(">>>", data);
+        if (data?.email) {
+          navigate(pagePaths?.login);
+        }
+      },
+    });
+  };
   return (
     <>
       <div className="inner-banner-one position-relative">
@@ -87,7 +123,7 @@ export const RegisterPage: FC = () => {
                   role="tabpanel"
                   id="fc1"
                 >
-                  <form>
+                  <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="row">
                       <div className="col-12">
                         <div className="input-group-meta position-relative mb-25">
@@ -95,7 +131,35 @@ export const RegisterPage: FC = () => {
                           <input
                             type="text"
                             placeholder="James Brower"
-                            name="name"
+                            {...register("name")}
+                          />
+                          <div className="help-block with-errors">
+                            <div style={{ color: "red" }}></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-12">
+                        <div className="input-group-meta position-relative mb-25">
+                          <label>Phone*</label>
+                          <input
+                            type="number"
+                            placeholder="james@example.com"
+                            {...register("phone")}
+                          />
+                          <div className="help-block with-errors">
+                            <div style={{ color: "red" }}></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-12">
+                        <div className="input-group-meta position-relative mb-25">
+                          <label>Age*</label>
+                          <input
+                            type="number"
+                            min={18}
+                            max={100}
+                            placeholder="james@example.com"
+                            {...register("age")}
                           />
                           <div className="help-block with-errors">
                             <div style={{ color: "red" }}></div>
@@ -108,7 +172,7 @@ export const RegisterPage: FC = () => {
                           <input
                             type="email"
                             placeholder="james@example.com"
-                            name="email"
+                            {...register("email")}
                           />
                           <div className="help-block with-errors">
                             <div style={{ color: "red" }}></div>
@@ -122,7 +186,7 @@ export const RegisterPage: FC = () => {
                             type="password"
                             placeholder="Enter Password"
                             className="pass_log_id"
-                            name="password"
+                            {...register("password")}
                           />
                           <span className="placeholder_icon">
                             <span className="passVicon">
