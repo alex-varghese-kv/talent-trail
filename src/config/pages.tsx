@@ -1,5 +1,6 @@
-import { CandidateAboutUs } from "Containers/CandidateAboutUs";
+import { CandidateAboutUs } from "Containers/CandidateAboutUs/CandidateAboutUs";
 import { CandidateDashboard } from "Containers/CandidateDashboard/CandidateDashboard";
+import { CandidateJobList } from "Containers/CandidateJobList/CandidateJobList";
 import { lazy, ReactElement } from "react";
 
 const Login = lazy(() => import("../Containers/Login"));
@@ -25,6 +26,7 @@ export const pagePaths: PagePaths = {
   createJob: "/admin/post-a-new-job",
   myJobs: "/admin/my-jobs",
   savedCandidate: "/admin/saved-candidate",
+  jobList: "jobList",
 };
 
 export const pages: Array<Page> = [
@@ -39,7 +41,6 @@ export const pages: Array<Page> = [
     path: pagePaths.home,
     Component: <CandidateDashboard />,
   },
-
   {
     title: "About us",
     path: pagePaths.about,
@@ -61,4 +62,9 @@ export const pages: Array<Page> = [
   //   Component: <CreateJob />,
   //   // redirectTo: pagePaths.cre,
   // },
+  {
+    title: "Job Listing",
+    path: pagePaths.jobList,
+    Component: <CandidateJobList />,
+  },
 ];
