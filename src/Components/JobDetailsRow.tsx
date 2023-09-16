@@ -1,7 +1,7 @@
 interface JobDetailsRowProps {
-  roleDesc: string;
+  roleDesc?: string;
   date?: string;
-  location: string;
+  location: any;
   showSave?: boolean;
   showApply?: boolean;
   showDate?: boolean;
@@ -50,7 +50,9 @@ export const JobDetailsRow = ({
           </div>
         )}
         <div className="col-xxl-2 col-lg-3 col-md-4 col-sm-6 ms-auto xs-mt-10">
-          <div className="job-location">{location}</div>
+          <div className="job-location">
+            {location?.country}, {location?.state}
+          </div>
           {!!salary && <div className="job-location">{salary}</div>}
         </div>
         <div className="col-lg-2 col-md-4">

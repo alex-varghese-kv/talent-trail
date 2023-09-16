@@ -613,7 +613,7 @@ export const CandidateJobList = () => {
                     ? data?.getJobs?.map((job) => (
                         <JobDetailsRow
                           key={job?.id}
-                          roleDesc={job?.description}
+                          roleDesc={job?.title}
                           location={job?.location}
                         />
                       ))
