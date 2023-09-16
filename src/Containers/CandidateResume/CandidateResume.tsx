@@ -3,21 +3,37 @@ import { AddExp } from 'Components/AddExp/AddExp';
 import { FileUpload } from 'Components/FileUpload/FileUpload';
 import { Select } from 'Components/Select/Select';
 import { SKILLS } from 'Components/admin/constants';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Controller, FormProvider, useForm } from 'react-hook-form';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { getCandidateDetails } from 'store/atoms/authAtom';
 
 const CandidateResume = () => {
-  const formMethods = useForm();
+  const [candidateDetails] = useRecoilState(getCandidateDetails);
+  const formMethods = useForm({
+    defaultValues: {
+      name: candidateDetails.name,
+      age: candidateDetails.age,
+      phone: candidateDetails.phone,
+      email: candidateDetails.email,
+      about: candidateDetails.overview,
+      skills: candidateDetails.skills,
+      gender: candidateDetails.gender,
+    },
+  });
   const {
     register,
     handleSubmit,
     getValues,
     control,
+    reset,
+    setValue,
     formState: { errors },
   } = formMethods;
 
   const [eduCount, setEduCount] = useState(1);
   const [expCount, setExpCount] = useState(1);
+  // console.log(candidateDetails);
 
   const renderNtimes = () => {
     const Element = [];
@@ -34,11 +50,20 @@ const CandidateResume = () => {
     }
     return <div>{Element}</div>;
   };
+  useEffect(() => {
+    setValue('name', candidateDetails.name);
+    setValue('age', candidateDetails.age);
+    setValue('phone', candidateDetails.phone);
+    setValue('email', candidateDetails.email);
+    setValue('about', candidateDetails.overview);
+    setValue('gender', candidateDetails.gender);
+  }, [candidateDetails, reset, setValue]);
+
   return (
     <div>
       <div className="dashboard-body !ml-0">
         <FormProvider {...formMethods}>
-          <form onSubmit={handleSubmit((data: any) => console.log(data))}>
+          <form onSubmit={handleSubmit((data: any) => console.log('pp', data))}>
             <div className="position-relative">
               <h2 className="main-title">My Resume</h2>
               <div className="bg-white card-box border-20">

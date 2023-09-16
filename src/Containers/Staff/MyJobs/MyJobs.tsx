@@ -1,15 +1,15 @@
 import ActionButton from "Components/ActionButton/ActionButton";
 import React from "react";
 import { useGetJobs } from "service/hooks/jobs.hooks";
+import MyJobsCard from "./components/MyJobsCard";
 
 const MyJobs = () => {
-  const { data: GetJobList } = useGetJobs({
+  const { data: jobList } = useGetJobs({
     variables: {
-      id: "1111",
-      
+      id: "1",
     },
   });
-  console.log("🚀 ~ file: MyJobs.tsx:6 ~ MyJobs ~ data:", GetJobList);
+  console.log("🚀 ~ file: MyJobs.tsx:6 ~ MyJobs ~ data:", jobList);
   return (
     <div className="bg-BG_GREEN h-screen text-left dashboard-body">
       <div className="flex justify-between mb-4 items-center">
@@ -87,22 +87,17 @@ const MyJobs = () => {
                   </tr>
                 </thead>
                 <tbody className="border-0">
-                  <tr className="active">
-                    <td>
-                      <div className="job-name fw-500">
-                        Brand &amp; Producr Designer
-                      </div>
-                      <div className="info1">Fulltime . Spain</div>
-                    </td>
-                    <td>05 Jun, 2023</td>
-                    <td>130 Applications</td>
-                    <td>
-                      <div className="job-status text-capitalize">active</div>
-                    </td>
-                    <td>
-                    <ActionButton />
-                    </td>
-                  </tr>
+                  {jobList?.getJobs.map((job) => {
+                    return (
+                      <MyJobsCard
+                        title={job.title}
+                        place={`${job.location.state},${job.location.country}`}
+                        jobCreated={job.createdAt}
+                        Applicants={job.applicants}
+                        status={job.status}
+                      />
+                    );
+                  })}
                 </tbody>
               </table>
             </div>

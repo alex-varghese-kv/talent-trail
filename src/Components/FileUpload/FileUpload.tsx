@@ -1,92 +1,151 @@
-import React, { LegacyRef } from 'react';
+import { useApolloClient, useLazyQuery } from '@apollo/client';
+import React, { ChangeEvent, LegacyRef, useEffect, useState } from 'react';
+import {
+  CREATE_DOCUMENTS,
+  GET_CANDIDATE,
+  GET_FILE_UPLOAD_URL,
+} from 'service/query/candidate';
+import './style.css';
+import { error } from 'console';
+import { APIRequestHeaders, CallApi } from 'types/request';
+import Axios, {
+  AxiosRequestConfig,
+  AxiosRequestHeaders,
+  AxiosResponse,
+  RawAxiosRequestHeaders,
+} from 'axios';
+import { REQUEST_METHODS } from '../../constants';
+import { useGetCandidate } from 'service/hooks/jobs.hooks';
+import { useRecoilState } from 'recoil';
+import { getCandidateDetails } from 'store/atoms/authAtom';
+// import { REQUEST_METHODS } from 'constants';
 
-const AcceptedFileType = {
-  // Text: '.txt',
-  // Gif: '.gif',
-  // Jpeg: '.jpg',
-  // Png: '.png',
-  // Doc: '.doc',
-  Pdf: '.pdf',
-  // AllImages: 'image/*',
-  // AllVideos: 'video/*',
-  // AllAudios: 'audio/*',
-};
+export enum requestMethods {
+  GET = 'get',
+  POST = 'post',
+  PUT = 'put',
+  DELETE = 'delete',
+}
+
 export const FileUpload = () => {
-  const fileRef = React.useRef<HTMLInputElement>(null);
-  const acceptedFormats = '.pdf';
+  const client = useApolloClient();
+  const userId = 2;
 
-  const [selectedFiles, setSelectedFiles] = React.useState<File | undefined>();
+  const [name, setName] = useState('');
+  const [selectedFile, setSelectedFile] = useState<File>();
+  const [, setCandidateDetails] = useRecoilState(getCandidateDetails);
 
-  const handleFileSelect = (event: any) => {
-    setSelectedFiles(event?.target?.files?.[0]);
+  const getFileUploadUrl = async () => {
+    return client.query<any, any>({
+      query: GET_FILE_UPLOAD_URL,
+      variables: {
+        // documents: [fileUploadInput],
+        key: `candidate/${userId}/resume/${selectedFile?.name}`,
+      },
+      fetchPolicy: 'network-only',
+    });
+  };
+  const defaultHeaders: APIRequestHeaders = {
+    'Content-Type': 'application/json',
   };
 
-  const onUpload = () => {
-    console.log(selectedFiles);
+  const callApi: CallApi = async ({ payload, headers }) => {
+    const apiParams: AxiosRequestConfig = {
+      ...payload,
+      headers: {
+        ...defaultHeaders,
+        ...headers,
+      },
+    };
+
+    // Fire API request
+    const apiResponse: AxiosResponse = await Axios(apiParams);
+    return apiResponse;
   };
 
-  const onClear = () => {
-    setSelectedFiles(undefined);
+  const uploadFileToS3 = async (url: string, file: File) => {
+    const imgBody = new Blob([file as File], { type: file?.type });
+    return callApi({
+      payload: { method: 'put' as REQUEST_METHODS, url, data: imgBody },
+      headers: { 'Content-Type': `application/json` },
+    });
   };
+  // const SavedCandidatesList = () => {
+  const saveUploadedFile = async () => {
+    return client.mutate<any, any>({
+      mutation: CREATE_DOCUMENTS,
+      variables: {
+        input: {
+          entityName: 'CANDIDATE',
+          entityId: userId,
+          key: `candidate/${userId}/resume/${selectedFile?.name}`,
+          type: 'RESUME',
+        },
+      },
+      fetchPolicy: 'network-only',
+      // refetchQueries,
+    });
+  };
+  const [getCandidate] = useLazyQuery(GET_CANDIDATE, {
+    fetchPolicy: 'network-only',
+  });
 
-  const onUpdate = (event: any) => {
-    if (event.target.textContent.trim().toLowerCase() === 'change') {
-      onClear();
-      fileRef?.current?.click();
-      return;
+  const uploadFile = async () => {
+    try {
+      const { data } = await getFileUploadUrl();
+      const { url, key } = data?.getDocumentUploadUrl || {};
+      await uploadFileToS3(url, selectedFile as File);
+      const { data: savedData } = await saveUploadedFile();
+      if (savedData) {
+        // console.log(savedData);
+        getCandidate({
+          variables: { id: userId },
+          onCompleted: (data) => {
+            console.log(data);
+            const details = data?.getCandidate?.info;
+            setCandidateDetails({
+              name: details.name,
+              age: data?.getCandidate?.age,
+              email: details.email,
+              phone: details.phone,
+              overview: details.summary,
+              skills: details.skills,
+              gender: { id: 1, label: 'M' },
+            });
+          },
+        });
+      }
+    } catch (error) {
+      throw error;
     }
-    if (event.target.textContent.trim().toLowerCase() === 'clear') {
-      onClear();
-      return;
-    }
   };
+  useEffect(() => {
+    if (selectedFile) uploadFile();
+  }, [selectedFile]);
 
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setSelectedFile(e.target.files[0]);
+    }
+    // uploadFile();
+  };
+  console.log(selectedFile?.name);
   return (
-    <>
-      <input
-        ref={fileRef}
-        hidden
-        type="file"
-        accept={acceptedFormats}
-        onChange={handleFileSelect}
-      />
-      {!selectedFiles?.name && (
-        <div className="button-group d-inline-flex align-items-center ">
-          <button
-            className="dash-btn-two tran3s me-3"
-            // variant="contained"
-            // component="label"
-            // style={{ textTransform: 'none' }}
-            onClick={() => fileRef.current?.click()}
-          >
-            Choose file to upload
-          </button>
-        </div>
-      )}
-      {selectedFiles?.name && (
-        <button
-          // variant="contained"
-          // component="label"
-          style={{ textTransform: 'none' }}
-          onClick={onUpdate}
-          className="flex w-full justify-between items-center"
-        >
-          <div> {selectedFiles?.name}</div>
-          <div className="flex">
-            <span className="bg-YELLOW_GREEN rounded-full py-2 px-3">
-              Clear
-            </span>
-          </div>
-        </button>
-      )}
-      {/* <button
-        color="primary"
-        disabled={!selectedFiles}
-        style={{ textTransform: 'none' }}
-        onClick={onUpload}
-      >
-        Upload
-      </button> */}
-    </>
+    <div>
+      <form>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          // className="dash-btn-two tran3s me-3"
+        />
+
+        <input
+          type="file"
+          onChange={handleFileChange}
+          content="Choose file to upload"
+        />
+      </form>
+    </div>
   );
 };

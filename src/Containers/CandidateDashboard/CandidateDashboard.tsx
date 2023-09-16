@@ -297,7 +297,7 @@ export const CandidateDashboard = () => {
                   <JobDetailsRow
                     key={job?.id}
                     roleDesc={job?.title}
-                    location={job?.location}
+                    location={job?.location.country}
                     onApply={() => navigate("jobList")}
                   />
                 ))

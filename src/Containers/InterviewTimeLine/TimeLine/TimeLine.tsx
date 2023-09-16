@@ -19,7 +19,8 @@ const TimeLine: FC<Props> = ({ timeLine }) => {
   const getTImeLineDetails = (
     status = "",
     actionItem: string,
-    event: string
+    event: string,
+    data: any
   ) => {
     console.log("🚀 ~ file: TimeLine.tsx:20 ~ TimeLine ~ status:", status);
     switch (status) {
@@ -29,6 +30,10 @@ const TimeLine: FC<Props> = ({ timeLine }) => {
         return <AcceptInterviewSchedule message={event} id={"123"} />;
       case INTERVIEW_STATUS.PENDING_INTERVIEW_FEEDBACK:
         return <InterviewFeedback message={event} id={"123"} />;
+      case INTERVIEW_STATUS.INTERVIEW_FEEDBACK_SUBMITTED:
+        return (
+          <InterviewFeedback message={event} id={"123"} readonly data={data} />
+        );
       default:
         return <p>{event}</p>;
     }
@@ -46,10 +51,12 @@ const TimeLine: FC<Props> = ({ timeLine }) => {
                 <h4 className="text-sm">
                   {STATUS_LABEL[`${event?.action}`] || ""}
                 </h4>
-                <h4 className="text-sm">{event.date}</h4>
+                <h4 className="text-sm">
+                  {new Date(event.date).toLocaleDateString()}
+                </h4>
               </div>
               <div className="flex text-left break-all">
-                {getTImeLineDetails(event?.action, "", event.message)}
+                {getTImeLineDetails(event?.action, "", event.message, event)}
               </div>
             </div>
           </VerticalTimelineElement>

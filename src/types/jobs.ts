@@ -4,7 +4,13 @@ interface Jobs {
   id: string;
   title: string;
   description: string;
-  location: string;
+  location: {
+    country: string;
+    state: string;
+  };
+  createdAt: string;
+  applicants: number;
+  status: string;
   info: any;
 }
 
@@ -81,4 +87,10 @@ export interface GetHotProfiles {
 
 export interface GetHotProfile {
   (config?: QueryHookOptions): QueryResult<GetHotProfiles>;
+}
+export interface GetCandidateQuery {
+  (config?: QueryHookOptions): QueryResult<any>;
+}
+export interface GetRankings {
+  (config?: QueryHookOptions): QueryResult<any>;
 }

@@ -6,11 +6,14 @@ const GET_JOBS = gql`
       id
       title
       description
+      applicants
       location {
         country
         state
       }
+      createdAt
       info
+      status
     }
   }
 `;
@@ -70,7 +73,7 @@ const GET_HOT_PROFILE = gql`
       age
       email
       phone
-      location{
+      location {
         country
         state
       }
