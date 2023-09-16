@@ -16,22 +16,22 @@ export const HotProfileCard = ({ profile }: any) => {
           style={{ width: "100%", display: "inline-block" }}
         >
           <div className="job-list-two style-two position-relative">
-            <a
+            <button
               className="save-btn text-center rounded-circle tran3s cursor-pointer"
               title="Save Job"
             >
               {profile?.id}
-            </a>
-            <a className="title fw-500 tran3s" href="6.html">
-              {profile?.name}
-            </a>
+            </button>
+            <a className="title fw-500 tran3s">{profile?.name}</a>
             <div className="job-location  my-1">{profile?.phone}</div>
             <div className="job-salary my-4"> Age {profile?.age}</div>
             <RatingBar rating={profile?.leetcode * 10} title="leetcode" />
             <RatingBar rating={profile?.github * 10} title="github" />
             <div className="d-flex align-items-center justify-content-between mt-2">
               <div className="job-location">
-                <a href="6.html">{profile?.location?.country}, {profile?.location?.state }</a>
+                <a href="6.html">
+                  {profile?.location?.country}, {profile?.location?.state}
+                </a>
               </div>
             </div>
           </div>
