@@ -19,12 +19,15 @@ const GET_JOBS = gql`
 `;
 
 const GET_JOB = gql`
-  query ($id: ID!) {
+  query ($id: Int!) {
     getJob(id: $id) {
       id
       title
       description
-      location
+      location{
+        country
+        state
+      }
       info
     }
   }

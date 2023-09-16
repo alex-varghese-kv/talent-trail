@@ -13,8 +13,24 @@ interface Jobs {
   status: string;
   info: any;
 }
+
+interface JobDetails {
+  id: string;
+  title: string;
+  description: string;
+  location: any;
+  info: any;
+}
+
+export interface GetJobDetails {
+  getJob: JobDetails;
+}
 export interface GetJobList {
   getJobs: Jobs[];
+}
+
+export interface GetJob {
+  (config?: QueryHookOptions): QueryResult<GetJobDetails>;
 }
 
 export interface Candidate {

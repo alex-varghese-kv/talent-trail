@@ -10,6 +10,7 @@ import {
   GetApplication,
   GetCandidateQuery,
   GetCandidates,
+  GetJob,
   GetJobs,
   GetRankings,
   GetHotProfile,
@@ -20,7 +21,7 @@ const useGetJobs: GetJobs = (config) => {
   return UseGraphQlQuery(GET_JOBS, config);
 };
 
-const useGetJob: GetJobs = (config) => {
+const useGetJob: GetJob = (config) => {
   return UseGraphQlQuery(GET_JOB, config);
 };
 
@@ -43,6 +44,7 @@ const useGetRankings: GetRankings = (config) => {
   return UseGraphQlQuery(GET_RANKINGS, config);
 };
 export {
+  useGetJob,
   useGetJobs,
   useGetCandidates,
   getApplication,
