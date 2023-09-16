@@ -558,7 +558,7 @@ export const CandidateJobList = () => {
               <div className="job-post-item-wrapper ms-xxl-5 ms-xl-3">
                 <div className="upper-filter d-flex justify-content-between align-items-center mb-20">
                   <div className="total-job-found">
-                    All <span className="text-dark">0</span> jobs found
+                    All <span className="text-dark">{data?.getJobs?.length || 0}</span> jobs found
                   </div>
                   <div className="d-flex align-items-center">
                     <div className="short-filter d-flex align-items-center">
