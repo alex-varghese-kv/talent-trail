@@ -17,7 +17,7 @@ const MyJobsCard: FC<Props> = ({
   status,
 }) => {
   const getState = (state: string) => (
-    <div className="text-capitalize flex justify-center items-center">
+    <div className="text-capitalize flex items-center">
       <div
         className={cx("w-3 h-3 text-center items-center mr-1 rounded-full", {
           "bg-[green]": state === "ACTIVE",

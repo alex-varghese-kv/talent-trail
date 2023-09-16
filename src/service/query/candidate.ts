@@ -62,6 +62,7 @@ export const GET_RANKINGS = gql`
       candidateId
       jobId
       status
+      score
       candidate {
         name
         email

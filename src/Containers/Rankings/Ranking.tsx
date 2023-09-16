@@ -1,5 +1,5 @@
-import { PersonRankings } from 'Components/PersonRankings/PersonRankings';
-import { useGetRankings } from 'service/hooks/jobs.hooks';
+import { PersonRankings } from "Components/PersonRankings/PersonRankings";
+import { useGetRankings } from "service/hooks/jobs.hooks";
 
 const Ranking = () => {
   const { data: rankingList } = useGetRankings({
@@ -23,11 +23,11 @@ const Ranking = () => {
           <PersonRankings
             email={item?.candidate.email}
             name={item?.candidate.name}
-            experience={item?.experience || '6 years'}
-            location={`${item?.candidate?.location?.state || 'Kochi'}, ${
-              item.candidate?.location?.country || 'Kerala'
+            experience={item?.experience || "6 years"}
+            location={`${item?.candidate?.location?.state || "Kochi"}, ${
+              item.candidate?.location?.country || "Kerala"
             }`}
-            score={8}
+            score={item?.score}
           />
         ))}
       </div>
