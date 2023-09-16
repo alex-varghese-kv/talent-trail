@@ -4,7 +4,13 @@ interface Jobs {
   id: string;
   title: string;
   description: string;
-  location: string;
+  location: {
+    country: string;
+    state: string;
+  };
+  createdAt: string;
+  applicants: number;
+  status: string;
   info: any;
 }
 export interface GetJobList {

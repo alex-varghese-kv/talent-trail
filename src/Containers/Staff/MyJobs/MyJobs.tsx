@@ -1,14 +1,14 @@
 import React from "react";
 import { useGetJobs } from "service/hooks/jobs.hooks";
+import MyJobsCard from "./components/MyJobsCard";
 
 const MyJobs = () => {
-  const { data: GetJobList } = useGetJobs({
+  const { data: jobList } = useGetJobs({
     variables: {
-      id: "1111",
-      
+      id: "1",
     },
   });
-  console.log("🚀 ~ file: MyJobs.tsx:6 ~ MyJobs ~ data:", GetJobList);
+  console.log("🚀 ~ file: MyJobs.tsx:6 ~ MyJobs ~ data:", jobList);
   return (
     <div className="bg-BG_GREEN h-screen text-left dashboard-body">
       <div className="flex justify-between mb-4 items-center">
@@ -86,97 +86,17 @@ const MyJobs = () => {
                   </tr>
                 </thead>
                 <tbody className="border-0">
-                  <tr className="active">
-                    <td>
-                      <div className="job-name fw-500">
-                        Brand &amp; Producr Designer
-                      </div>
-                      <div className="info1">Fulltime . Spain</div>
-                    </td>
-                    <td>05 Jun, 2023</td>
-                    <td>130 Applications</td>
-                    <td>
-                      <div className="job-status text-capitalize">active</div>
-                    </td>
-                    <td>
-                      <div className="action-dots float-end">
-                        <button
-                          className="action-btn dropdown-toggle"
-                          type="button"
-                          data-bs-toggle="dropdown"
-                          aria-expanded="false"
-                        >
-                          <span></span>
-                        </button>
-                        <ul className="dropdown-menu dropdown-menu-end">
-                          <li>
-                            <a className="dropdown-item" href="#">
-                              <img
-                                alt="icon"
-                                loading="lazy"
-                                width="17"
-                                height="14"
-                                decoding="async"
-                                data-nimg="1"
-                                className="lazy-img"
-                                src="/_next/static/media/icon_18.0f7046f3.svg"
-                                style={{ color: "transparent;" }}
-                              />{" "}
-                              View
-                            </a>
-                          </li>
-                          <li>
-                            <a className="dropdown-item" href="#">
-                              <img
-                                alt="icon"
-                                loading="lazy"
-                                width="16"
-                                height="13"
-                                decoding="async"
-                                data-nimg="1"
-                                className="lazy-img"
-                                src="/_next/static/media/icon_19.b2f1576b.svg"
-                                style={{ color: "transparent;" }}
-                              />{" "}
-                              Share
-                            </a>
-                          </li>
-                          <li>
-                            <a className="dropdown-item" href="#">
-                              <img
-                                alt="icon"
-                                loading="lazy"
-                                width="14"
-                                height="14"
-                                decoding="async"
-                                data-nimg="1"
-                                className="lazy-img"
-                                src="/_next/static/media/icon_20.e619462a.svg"
-                                style={{ color: "transparent;" }}
-                              />{" "}
-                              Edit
-                            </a>
-                          </li>
-                          <li>
-                            <a className="dropdown-item" href="#">
-                              <img
-                                alt="icon"
-                                loading="lazy"
-                                width="14"
-                                height="16"
-                                decoding="async"
-                                data-nimg="1"
-                                className="lazy-img"
-                                src="/_next/static/media/icon_21.1bede725.svg"
-                                style={{ color: "transparent;" }}
-                              />{" "}
-                              Delete
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </td>
-                  </tr>
+                  {jobList?.getJobs.map((job) => {
+                    return (
+                      <MyJobsCard
+                        title={job.title}
+                        place={`${job.location.state},${job.location.country}`}
+                        jobCreated={job.createdAt}
+                        Applicants={job.applicants}
+                        status={job.status}
+                      />
+                    );
+                  })}
                 </tbody>
               </table>
             </div>

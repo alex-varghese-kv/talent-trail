@@ -614,7 +614,7 @@ export const CandidateJobList = () => {
                         <JobDetailsRow
                           key={job?.id}
                           roleDesc={job?.description}
-                          location={job?.location}
+                          location={job?.location.country}
                         />
                       ))
                     : `No jobs available`}

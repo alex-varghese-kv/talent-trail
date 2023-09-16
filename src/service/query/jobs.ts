@@ -6,11 +6,14 @@ const GET_JOBS = gql`
       id
       title
       description
-      location{
+      applicants
+      location {
         country
         state
       }
+      createdAt
       info
+      status
     }
   }
 `;
