@@ -6,6 +6,7 @@ import { lazy, ReactElement } from "react";
 import { JobDetails } from "Containers/JobDetails.tsx/JobDetails";
 import { CandidateProfileDetails } from "Containers/CandidateProfile/CandidateProfileDetails";
 import InterviewSettings from "Containers/interviewSettings/interviewSettings";
+import { CandidateJobDetails } from "Containers/CandidateJobDetails";
 
 const Login = lazy(() => import("../Containers/Login"));
 const CreateJob = lazy(() => import("../Containers/CreateJob"));
@@ -44,6 +45,7 @@ export const pagePaths: PagePaths = {
   profile: "/admin/profile",
   resume: "/resume",
   interviewSettings: "/admin/interview-settings",
+  candidateJobDetails: "/admin/jobDetails",
 };
 
 export const pages: Array<Page> = [
@@ -113,5 +115,10 @@ export const pages: Array<Page> = [
     title: "Interview settings",
     path: pagePaths.interviewSettings,
     Component: <InterviewSettings />,
+  },
+  {
+    title: "Interview settings",
+    path: pagePaths.candidateJobDetails,
+    Component: <CandidateJobDetails />,
   },
 ];

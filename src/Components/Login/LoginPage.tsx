@@ -144,7 +144,7 @@ export const LoginPage: FC<{
 
               <p className="text-center mt-10">
                 Do not have an account?
-                <a className="fw-500" href="register.html">
+                <a className="fw-500" href="/register">
                   Sign up
                 </a>
               </p>

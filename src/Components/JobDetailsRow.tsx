@@ -26,7 +26,7 @@ export const JobDetailsRow = ({
       <div className="row justify-content-between align-items-center">
         <div className="col-xxl-3 col-lg-4">
           <div className="job-title d-flex align-items-center">
-            <a className="logo" href="job-details-v1/1.html">
+            <a className="logo" href="#">
               <img
                 alt="logo"
                 loading="lazy"
@@ -39,7 +39,7 @@ export const JobDetailsRow = ({
                 src="assets/media_22ab06.png?url=%2Fsrc%2Fassets%2Fstatic%2Fmedia%2Fmedia_22.142b36c3.png&amp;w=128&amp;q=75"
               />
             </a>
-            <a className="title fw-500 tran3s" href="job-details-v1/1.html">
+            <a className="title fw-500 tran3s" href="#">
               {roleDesc}
             </a>
           </div>
@@ -67,7 +67,7 @@ export const JobDetailsRow = ({
             {showApply && (
               <a
                 className="apply-btn text-center tran3s"
-                href="job-details-v1/1.html"
+                href="#"
                 onClick={onApply}
               >
                 APPLY

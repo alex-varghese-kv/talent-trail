@@ -89,18 +89,6 @@ const Header = ({
                   <li className="nav-item dropdown ">
                     <a
                       className="nav-link dropdown-toggle !text-white"
-                      href="/about"
-                      role="button"
-                      data-bs-toggle="dropdown"
-                      data-bs-auto-close="outside"
-                      aria-expanded="false"
-                    >
-                      About Us
-                    </a>
-                  </li>
-                  <li className="nav-item dropdown ">
-                    <a
-                      className="nav-link dropdown-toggle !text-white"
                       href="#"
                       role="button"
                       data-bs-toggle="dropdown"

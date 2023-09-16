@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import cx from "classnames";
+import { pagePaths } from "config/pages";
 
 const ActionButton = () => {
   const [showActionItems, setShowActionItems] = useState(false);
@@ -26,13 +27,13 @@ const ActionButton = () => {
                 position: "absolute",
                 inset: "0px 0px auto auto",
                 margin: "0px",
-                transform: "translate3d(-30px, 69px, 0px)",
+                transform: "translate3d(-14px, 120px, 0px)",
               }
             : {}
         }
       >
         <li>
-          <a className="dropdown-item" href="#">
+          <a className="dropdown-item" href={pagePaths.candidateJobDetails}>
             <img
               alt="icon"
               loading="lazy"

@@ -4,35 +4,6 @@ export const Footer = () => {
       <div className="container">
         <div className="inner-wrapper">
           <div className="row justify-content-between">
-            <div className="col-xl-4 col-lg-3 footer-intro mb-15">
-              <div className="logo mb-25">
-                <a className="d-flex align-items-center" href="index.html">
-                  <img
-                    alt="logo"
-                    width="119"
-                    height="40"
-                    decoding="async"
-                    data-nimg="1"
-                    style={{ color: "transparent" }}
-                    src="assets/logo_047ea5.png?url=%2Fsrc%2Fassets%2Fstatic%2Fmedia%2Flogo_04.42350b2e.png&amp;w=256&amp;q=75"
-                  />
-                </a>
-              </div>
-              <a href="#" className="email fw-500">
-                jobisupport@new.com
-              </a>
-              <img
-                alt="shape"
-                loading="lazy"
-                width="53"
-                height="53"
-                decoding="async"
-                data-nimg="1"
-                className="lazy-img mt-50 sm-mt-30 sm-mb-20"
-                style={{ color: "transparent" }}
-                src="assets/media/shape_28.761e9e53.svg"
-              />
-            </div>
             <div className="col-lg-2 col-sm-4 mb-20">
               <h5 className="footer-title">Services​</h5>
               <ul className="footer-nav-link style-none">

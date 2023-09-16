@@ -1,98 +1,18 @@
 import { SuggestedCandidates } from "Components/SuggestedCandidates/SuggestedCandidates";
-import { useGetJob } from "service/hooks/jobs.hooks";
 
-export const JobDetails = () => {
-  const jobdata = {};
-
-  const { data } = useGetJob({
-    fetchPolicy: "network-only",
-    variables: {
-      id: "",
-    },
-  });
+export const CandidateJobDetails = () => {
   return (
-    <>
-      <div className="inner-banner-one position-relative">
-        <div className="container">
-          <div className="position-relative">
-            <div className="row">
-              <div className="col-xl-6 m-auto text-center">
-                <div className="title-two">
-                  <h2 className="text-white">Job Details</h2>
-                </div>
-                <p className="text-lg text-white mt-30 lg-mt-20">
-                  Here will be your company job details &amp; requirements
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <img
-          alt="shape"
-          loading="lazy"
-          width="83"
-          height="94"
-          decoding="async"
-          data-nimg="1"
-          className="lazy-img shapes shape_01"
-          style={{ color: " transparent" }}
-          src="media/shape_02.e6196842.svg"
-        />
-        <img
-          alt="shape"
-          loading="lazy"
-          width="141"
-          height="57"
-          decoding="async"
-          data-nimg="1"
-          className="lazy-img shapes shape_02"
-          style={{ color: " transparent" }}
-          src="media/shape_03.746a3d0c.svg"
-        />
-      </div>
+    <div className="bg-BG_GREEN  text-left dashboard-body">
       <section className="job-details pt-100 lg-pt-80 pb-130 lg-pb-80">
         <div className="container">
           <div className="row">
             <div className="col-xxl-9 col-xl-8">
               <div className="details-post-data me-xxl-5 pe-xxl-4">
-                <div className="post-date">
-                  18 Jul 2024 by{" "}
-                  <a href="#" className="fw-500 text-dark">
-                    slack
-                  </a>
-                </div>
+                <div className="post-date">18 Jul 2024</div>
                 <h3 className="post-title">
                   Developer &amp; expert in java c++
                 </h3>
-                <ul className="share-buttons d-flex flex-wrap style-none">
-                  <li>
-                    <a
-                      href="#"
-                      className="d-flex align-items-center justify-content-center"
-                    >
-                      <i className="bi bi-facebook"></i>
-                      <span>Facebook</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="d-flex align-items-center justify-content-center"
-                    >
-                      <i className="bi bi-twitter"></i>
-                      <span>Twitter</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="d-flex align-items-center justify-content-center"
-                    >
-                      <i className="bi bi-link-45deg"></i>
-                      <span>Copy</span>
-                    </a>
-                  </li>
-                </ul>
+
                 <div className="post-block border-style mt-50 lg-mt-30">
                   <div className="d-flex align-items-center">
                     <div className="block-numb text-center fw-500 text-white rounded-circle me-2">
@@ -205,55 +125,15 @@ export const JobDetails = () => {
                     </li>
                   </ul>
                 </div>
-                <div className="post-block border-style mt-40 lg-mt-30">
-                  <div className="d-flex align-items-center">
-                    <div className="block-numb text-center fw-500 text-white rounded-circle me-2">
-                      5
-                    </div>
-                    <h4 className="block-title">Benefits:</h4>
-                  </div>
-                  <ul className="list-type-two style-none mb-15">
-                    <li>We are a remote-first company.</li>
-                    <li>
-                      100% company-paid health insurance premiums for you &amp;
-                      your dependents
-                    </li>
-                    <li>Vacation stipend</li>
-                    <li>Unlimited paid vacation and paid company holidays</li>
-                    <li>Monthly wellness/gym stipend</li>
-                  </ul>
-                </div>
               </div>
             </div>
             <div className="col-xxl-3 col-xl-4">
               <div className="job-company-info ms-xl-5 ms-xxl-0 lg-mt-50">
-                <img
-                  alt="logo"
-                  loading="lazy"
-                  width="60"
-                  height="60"
-                  decoding="async"
-                  data-nimg="1"
-                  className="lazy-img m-auto logo"
-                  style={{ color: " transparent" }}
-                  src="assets/media_22ab06.png?url=%2F_next%2Fstatic%2Fmedia%2Fmedia_22.142b36c3.png&amp;w=128&amp;q=75"
-                />
-                <div className="text-md text-dark text-center mt-15 mb-20 text-capitalize">
-                  slack
-                </div>
-                <a href="#" className="website-btn tran3s">
-                  Visit website
-                </a>
+                <button className="bg-[#31795a]  text-white rounded-3xl w-full p-2">
+                  Viewed applied candidates
+                </button>
                 <div className="border-top mt-40 pt-40">
                   <ul className="job-meta-data row style-none">
-                    <li className="col-xl-7 col-md-4 col-sm-6">
-                      <span>Salary</span>
-                      <div>900 / Monthly</div>
-                    </li>
-                    <li className="col-xl-5 col-md-4 col-sm-6">
-                      <span>Expertise</span>
-                      <div>Fresher</div>
-                    </li>
                     <li className="col-xl-7 col-md-4 col-sm-6">
                       <span>Location</span>
                       <div>Spain, Bercelona</div>
@@ -275,15 +155,13 @@ export const JobDetails = () => {
                     <a href="#">java</a>
                     <a href="#">developer</a>
                   </div>
-                  <a href="#" className="btn-one w-100 mt-25">
-                    Apply Now
-                  </a>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-    </>
+      <SuggestedCandidates />
+    </div>
   );
 };

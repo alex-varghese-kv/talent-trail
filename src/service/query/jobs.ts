@@ -6,7 +6,7 @@ const GET_JOBS = gql`
       id
       title
       description
-      location{
+      location {
         country
         state
       }
@@ -59,4 +59,22 @@ const GET_APPLICATION = gql`
   }
 `;
 
-export { GET_JOBS, GET_CANDIDATES, GET_APPLICATION };
+const GET_HOT_PROFILE = gql`
+  query {
+    getHotProfiles {
+      id
+      name
+      age
+      email
+      phone
+      location{
+        country
+        state
+      }
+      leetcode
+      github
+    }
+  }
+`;
+
+export { GET_JOBS, GET_CANDIDATES, GET_APPLICATION, GET_JOB, GET_HOT_PROFILE };

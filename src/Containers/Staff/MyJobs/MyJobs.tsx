@@ -1,3 +1,4 @@
+import ActionButton from "Components/ActionButton/ActionButton";
 import React from "react";
 import { useGetJobs } from "service/hooks/jobs.hooks";
 
@@ -99,82 +100,7 @@ const MyJobs = () => {
                       <div className="job-status text-capitalize">active</div>
                     </td>
                     <td>
-                      <div className="action-dots float-end">
-                        <button
-                          className="action-btn dropdown-toggle"
-                          type="button"
-                          data-bs-toggle="dropdown"
-                          aria-expanded="false"
-                        >
-                          <span></span>
-                        </button>
-                        <ul className="dropdown-menu dropdown-menu-end">
-                          <li>
-                            <a className="dropdown-item" href="#">
-                              <img
-                                alt="icon"
-                                loading="lazy"
-                                width="17"
-                                height="14"
-                                decoding="async"
-                                data-nimg="1"
-                                className="lazy-img"
-                                src="/_next/static/media/icon_18.0f7046f3.svg"
-                                style={{ color: "transparent;" }}
-                              />{" "}
-                              View
-                            </a>
-                          </li>
-                          <li>
-                            <a className="dropdown-item" href="#">
-                              <img
-                                alt="icon"
-                                loading="lazy"
-                                width="16"
-                                height="13"
-                                decoding="async"
-                                data-nimg="1"
-                                className="lazy-img"
-                                src="/_next/static/media/icon_19.b2f1576b.svg"
-                                style={{ color: "transparent;" }}
-                              />{" "}
-                              Share
-                            </a>
-                          </li>
-                          <li>
-                            <a className="dropdown-item" href="#">
-                              <img
-                                alt="icon"
-                                loading="lazy"
-                                width="14"
-                                height="14"
-                                decoding="async"
-                                data-nimg="1"
-                                className="lazy-img"
-                                src="/_next/static/media/icon_20.e619462a.svg"
-                                style={{ color: "transparent;" }}
-                              />{" "}
-                              Edit
-                            </a>
-                          </li>
-                          <li>
-                            <a className="dropdown-item" href="#">
-                              <img
-                                alt="icon"
-                                loading="lazy"
-                                width="14"
-                                height="16"
-                                decoding="async"
-                                data-nimg="1"
-                                className="lazy-img"
-                                src="/_next/static/media/icon_21.1bede725.svg"
-                                style={{ color: "transparent;" }}
-                              />{" "}
-                              Delete
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
+                    <ActionButton />
                     </td>
                   </tr>
                 </tbody>
