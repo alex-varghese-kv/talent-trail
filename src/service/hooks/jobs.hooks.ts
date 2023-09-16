@@ -2,6 +2,7 @@ import {
   GetApplication,
   GetCandidates,
   GetHotProfile,
+  GetJob,
   GetJobs,
 } from "types/jobs";
 import { UseGraphQlQuery } from "./hooks";
@@ -17,7 +18,7 @@ const useGetJobs: GetJobs = (config) => {
   return UseGraphQlQuery(GET_JOBS, config);
 };
 
-const useGetJob: GetJobs = (config) => {
+const useGetJob: GetJob = (config) => {
   return UseGraphQlQuery(GET_JOB, config);
 };
 
