@@ -1,10 +1,10 @@
 import { SuggestedCandidates } from "Components/SuggestedCandidates/SuggestedCandidates";
-import { useGetJob } from "service/hooks/jobs.hooks";
+import { useGetJobs } from "service/hooks/jobs.hooks";
 
 export const JobDetails = () => {
   const jobdata = {};
 
-  const { data } = useGetJob({
+  const { data } = useGetJobs({
     fetchPolicy: "network-only",
     variables: {
       id: "",

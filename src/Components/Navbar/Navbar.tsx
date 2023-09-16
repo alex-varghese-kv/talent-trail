@@ -1,11 +1,11 @@
-import { FC, Fragment, ReactElement } from "react";
-import cx from "classnames";
-import { Link, redirect, useLocation } from "react-router-dom";
-import { pagePaths } from "config/pages";
-import { navbarItems } from "./Navbar.config";
-import { useResetRecoilState } from "recoil";
-import { loginedUserDetails } from "store/atoms/authAtom";
-import { useNavigate } from "react-router-dom";
+import { FC, Fragment, ReactElement } from 'react';
+import cx from 'classnames';
+import { Link, redirect, useLocation } from 'react-router-dom';
+import { pagePaths } from 'config/pages';
+import { navbarItems } from './Navbar.config';
+import { useResetRecoilState } from 'recoil';
+import { loginedUserDetails } from 'store/atoms/authAtom';
+import { useNavigate } from 'react-router-dom';
 
 interface NavbarProps {
   setIsOpen(type: boolean): void;
@@ -18,7 +18,7 @@ export const Navbar: FC<NavbarProps> = ({ setIsOpen, isOpen }) => {
   const handleLogout = () => {
     filterReset();
     localStorage.clear();
-    navigate("/home");
+    navigate('/home');
   };
 
   return (
@@ -33,7 +33,7 @@ export const Navbar: FC<NavbarProps> = ({ setIsOpen, isOpen }) => {
                 height="42"
                 decoding="async"
                 data-nimg="1"
-                style={{ color: "transparent", width: "150px" }}
+                style={{ color: 'transparent', width: '150px' }}
                 src="/assets/logo.png"
               />
             </a>
@@ -51,7 +51,7 @@ export const Navbar: FC<NavbarProps> = ({ setIsOpen, isOpen }) => {
                 decoding="async"
                 data-nimg="1"
                 className="lazy-img"
-                style={{ color: "transparent;height:auto" }}
+                style={{ color: 'transparent;height:auto' }}
                 src="/assets/john_honai.png"
               />
             </div>
@@ -59,7 +59,7 @@ export const Navbar: FC<NavbarProps> = ({ setIsOpen, isOpen }) => {
           </div>
           <div
             className="flex flex-col justify-between"
-            style={{ height: "calc(100% - 300px)" }}
+            style={{ height: 'calc(100% - 300px)' }}
           >
             <nav className="dasboard-main-nav">
               <ul className="style-none">
@@ -78,7 +78,7 @@ export const Navbar: FC<NavbarProps> = ({ setIsOpen, isOpen }) => {
                         decoding="async"
                         data-nimg="1"
                         className="lazy-img"
-                        style={{ color: "transparent" }}
+                        style={{ color: 'transparent' }}
                         src={item.icon}
                       />
                       <span>{item.title}</span>
@@ -97,7 +97,7 @@ export const Navbar: FC<NavbarProps> = ({ setIsOpen, isOpen }) => {
                   decoding="async"
                   data-nimg="1"
                   className="lazy-img mr-1"
-                  style={{ color: "transparent" }}
+                  style={{ color: 'transparent' }}
                   src="/media/icon_9.69f19313.svg"
                 />
                 <span>Logout</span>

@@ -72,3 +72,9 @@ export interface GetHotProfiles {
 export interface GetHotProfile {
   (config?: QueryHookOptions): QueryResult<GetHotProfiles>;
 }
+export interface GetCandidateQuery {
+  (config?: QueryHookOptions): QueryResult<any>;
+}
+export interface GetRankings {
+  (config?: QueryHookOptions): QueryResult<any>;
+}

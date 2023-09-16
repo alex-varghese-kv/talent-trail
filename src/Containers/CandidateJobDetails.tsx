@@ -1,4 +1,5 @@
 import { SuggestedCandidates } from "Components/SuggestedCandidates/SuggestedCandidates";
+import { Link } from "react-router-dom";
 
 export const CandidateJobDetails = () => {
   return (
@@ -129,9 +130,12 @@ export const CandidateJobDetails = () => {
             </div>
             <div className="col-xxl-3 col-xl-4">
               <div className="job-company-info ms-xl-5 ms-xxl-0 lg-mt-50">
-                <button className="bg-[#31795a]  text-white rounded-3xl w-full p-2">
+                <Link
+                  to={"/admin/rankings"}
+                  className="bg-[#31795a]  text-white rounded-3xl w-full p-2 flex text-center items-center justify-center"
+                >
                   Viewed applied candidates
-                </button>
+                </Link>
                 <div className="border-top mt-40 pt-40">
                   <ul className="job-meta-data row style-none">
                     <li className="col-xl-7 col-md-4 col-sm-6">

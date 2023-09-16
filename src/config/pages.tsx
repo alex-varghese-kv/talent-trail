@@ -5,7 +5,7 @@ import { CandidateJobList } from "Containers/CandidateJobList/CandidateJobList";
 import { lazy, ReactElement } from "react";
 import { JobDetails } from "Containers/JobDetails.tsx/JobDetails";
 import { CandidateProfileDetails } from "Containers/CandidateProfile/CandidateProfileDetails";
-import InterviewSettings from "Containers/interviewSettings/interviewSettings";
+// import InterviewSettings from "Containers/interviewSettings/interviewSettings";
 import { CandidateJobDetails } from "Containers/CandidateJobDetails";
 
 const Login = lazy(() => import("../Containers/Login"));
@@ -18,6 +18,10 @@ const InterviewTimeLine = lazy(
 const CandidateResume = lazy(
   () => import("../Containers/CandidateResume/CandidateResume")
 );
+const InterviewSettings = lazy(
+  () => import("../Containers/interviewSettings/interviewSettings")
+);
+const Rankings = lazy(() => import("../Containers/Rankings/Ranking"));
 
 interface Page {
   title: string;
@@ -46,6 +50,7 @@ export const pagePaths: PagePaths = {
   resume: "/resume",
   interviewSettings: "/admin/interview-settings",
   candidateJobDetails: "/admin/jobDetails",
+  rankings: "/admin/rankings",
 };
 
 export const pages: Array<Page> = [
@@ -120,5 +125,10 @@ export const pages: Array<Page> = [
     title: "Interview settings",
     path: pagePaths.candidateJobDetails,
     Component: <CandidateJobDetails />,
+  },
+  {
+    title: "Ranking",
+    path: pagePaths.rankings,
+    Component: <Rankings />,
   },
 ];

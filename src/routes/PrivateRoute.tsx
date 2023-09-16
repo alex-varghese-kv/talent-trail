@@ -1,13 +1,13 @@
-import React, { FC, Suspense, useState } from "react";
-import { Navbar } from "Components/Navbar/Navbar";
-import { pages } from "config/pages";
-import { Route, Routes, redirect } from "react-router-dom";
-import { TopNavbar } from "Components/TopNavbar/TopNavbar";
+import React, { FC, Suspense, useState } from 'react';
+import { Navbar } from 'Components/Navbar/Navbar';
+import { pages } from 'config/pages';
+import { Route, Routes, redirect } from 'react-router-dom';
+import { TopNavbar } from 'Components/TopNavbar/TopNavbar';
 
 const PrivateRoute: FC = (): any => {
   const [showSideNav, setshowSideNav] = useState(false);
   const [showTopNav, setshowTopNav] = useState(true);
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem('token');
   if (!token) {
     // return redirect("/login");
   }

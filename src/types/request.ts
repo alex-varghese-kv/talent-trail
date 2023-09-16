@@ -12,8 +12,8 @@ export interface CallApi {
 
 export type CallApiConfig = {
   payload: RequestPayload;
-  headers?: AxiosRequestHeaders;
-  onUploadProgress: (progressEvent: AxiosProgressEvent) => void;
+  headers?: AxiosRequestHeaders | any;
+  onUploadProgress?: (progressEvent: AxiosProgressEvent) => void;
 };
 export interface APIRequestHeaders {
   "Content-Type": string;

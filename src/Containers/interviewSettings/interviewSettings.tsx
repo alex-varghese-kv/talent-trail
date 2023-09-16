@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 
 const InterviewSettings = () => {
   const { register, handleSubmit, watch } = useForm({
@@ -10,8 +10,8 @@ const InterviewSettings = () => {
   });
   // console.log(watch());
   useEffect(() => {
-    setRoundsCount(watch('rounds'));
-  }, [watch('rounds')]);
+    setRoundsCount(watch("rounds"));
+  }, [watch("rounds")]);
 
   const [roundsCount, setRoundsCount] = useState(1);
 
@@ -49,7 +49,7 @@ const InterviewSettings = () => {
             <h4 className="dash-title-three">Update interview details</h4>
             <div className="dash-input-wrapper mb-30">
               <label htmlFor="">No. Of Rounds</label>
-              <input type="text" placeholder="Ex: 2" {...register('rounds')} />
+              <input type="text" placeholder="Ex: 2" {...register("rounds")} />
             </div>
             {renderNtimesExp()}
             <div className="button-group d-inline-flex align-items-center mt-30">
