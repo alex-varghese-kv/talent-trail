@@ -52,3 +52,23 @@ export interface GetApplications {
 export interface GetApplication {
   (config?: QueryHookOptions): QueryResult<GetApplications>;
 }
+
+export interface HotProfiles {
+  id: String;
+  name: String;
+  age: Number;
+  email: String;
+  phone: String;
+  info: JSON;
+  location: Location;
+  leetcode: Number;
+  github: Number;
+  onboardingInfo: JSON;
+}
+export interface GetHotProfiles {
+  getHotProfiles: HotProfiles[];
+}
+
+export interface GetHotProfile {
+  (config?: QueryHookOptions): QueryResult<GetHotProfiles>;
+}

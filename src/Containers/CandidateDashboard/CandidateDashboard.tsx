@@ -6,10 +6,11 @@ import { JobDetailsRow } from "Components/JobDetailsRow";
 import { LoginPage } from "Components/Login/LoginPage";
 import { useState } from "react";
 import { useGetJobs } from "service/hooks/jobs.hooks";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { pagePaths } from "config/pages";
 
 export const CandidateDashboard = () => {
+  const navigate = useNavigate();
   const jobListData = [
     {
       roleDesc: "Developer &amp; expert in java c++",
@@ -267,55 +268,6 @@ export const CandidateDashboard = () => {
               </div>
             </div>
           </div>
-          <div className="border-bottom pb-50 lg-pb-20 mt-110 xl-mt-80 lg-mt-30">
-            <div className="row">
-              <div className="col-sm-4">
-                <div className="counter-block-one mt-25 text-center wow fadeInUp">
-                  <div className="main-count fw-500 text-dark">
-                    <span className="counter">
-                      <div className="d-flex align-items-center justify-content-center">
-                        <span></span>
-                        <span>
-                          <span>million</span>
-                        </span>
-                      </div>
-                    </span>
-                  </div>
-                  <p className="">Completed Jobs</p>
-                </div>
-              </div>
-              <div className="col-sm-4">
-                <div className="counter-block-one mt-25 text-center wow fadeInUp">
-                  <div className="main-count fw-500 text-dark">
-                    <span className="counter">
-                      <div className="d-flex align-items-center justify-content-center">
-                        <span></span>
-                        <span>
-                          <span>k+</span>
-                        </span>
-                      </div>
-                    </span>
-                  </div>
-                  <p className="">Worldwide Client</p>
-                </div>
-              </div>
-              <div className="col-sm-4">
-                <div className="counter-block-one mt-25 text-center wow fadeInUp">
-                  <div className="main-count fw-500 text-dark">
-                    <span className="counter">
-                      <div className="d-flex align-items-center justify-content-center">
-                        <span></span>
-                        <span>
-                          <span>billion</span>
-                        </span>
-                      </div>
-                    </span>
-                  </div>
-                  <p className="">Dollar Payout</p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
       <section className="job-listing-one mt-180 xl-mt-150 lg-mt-100">
@@ -344,8 +296,9 @@ export const CandidateDashboard = () => {
               ? data?.getJobs?.map((job) => (
                   <JobDetailsRow
                     key={job?.id}
-                    roleDesc={job?.description}
+                    roleDesc={job?.title}
                     location={job?.location.country}
+                    onApply={() => navigate("jobList")}
                   />
                 ))
               : `No jobs available`}
@@ -355,12 +308,6 @@ export const CandidateDashboard = () => {
               Explore all jobs
             </a>
           </div>
-          {/* <div className="text-center mt-80 lg-mt-30 wow fadeInUp">
-            <div className="btn-eight fw-500">
-              Do you want to post a job for your company?
-              <span>We can help.</span> <a href="register.html">Click here</a>
-            </div>
-          </div> */}
         </div>
       </section>
       <Footer />

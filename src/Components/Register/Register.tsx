@@ -1,10 +1,10 @@
 import React, { FC, useState } from "react";
 import cx from "classnames";
 
-import { useNavigate } from "react-router";
 import { pagePaths } from "config/pages";
 import { useForm } from "react-hook-form";
 import { SignUp, SignUpEmployee } from "service/hooks/auth.hooks";
+import { useNavigate } from "react-router-dom";
 export const RegisterPage: FC = () => {
   const [registerType, setRegisterType] = useState("emp");
   const [submitSignup] = SignUp({
