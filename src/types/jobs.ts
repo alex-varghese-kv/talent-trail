@@ -50,3 +50,7 @@ export interface GetApplication {
 export interface GetCandidateQuery {
   (config?: QueryHookOptions): QueryResult<any>;
 }
+export interface GetRankings {
+  (config?: QueryHookOptions): QueryResult<any>;
+
+}

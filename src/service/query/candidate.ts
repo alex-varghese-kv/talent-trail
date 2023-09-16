@@ -49,3 +49,30 @@ export const GET_CANDIDATE = gql`
     }
   }
 `;
+
+export const GET_RANKINGS = gql`
+  query FindApplications(
+    $filter: ApplicationFilter
+
+  ) {
+    findApplications(
+      filter: $filter
+    ) {
+      id
+      candidateId
+      jobId
+      status
+      candidate {
+        name
+        email
+        location {
+          country
+          state
+        }
+      }
+      job {
+        title
+      }
+    }
+  }
+`;

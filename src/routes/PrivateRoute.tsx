@@ -15,7 +15,7 @@ const PrivateRoute: FC = (): any => {
     <div>
       <div className="h-screen w-full flex">
         {/* <TopNavbar isOpen={showSideNav} setIsOpen={setshowSideNav} /> */}
-        {/* <Navbar isOpen={showTopNav} setIsOpen={setshowTopNav} /> */}
+        <Navbar isOpen={showTopNav} setIsOpen={setshowTopNav} />
         <div
           className="flex-1 mt-14 relative h-max-content"
           id="modal-container"

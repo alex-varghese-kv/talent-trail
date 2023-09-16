@@ -1,7 +1,7 @@
-import { GetApplication, GetCandidateQuery, GetCandidates, GetJobs } from "types/jobs";
+import { GetApplication, GetCandidateQuery, GetCandidates, GetJobs, GetRankings } from "types/jobs";
 import { UseGraphQlQuery } from "./hooks";
 import { GET_JOBS, GET_CANDIDATES, GET_APPLICATION } from "service/query/jobs";
-import { GET_CANDIDATE } from "service/query/candidate";
+import { GET_CANDIDATE, GET_RANKINGS } from "service/query/candidate";
 
 const useGetJobs: GetJobs = (config) => {
   return UseGraphQlQuery(GET_JOBS, config);
@@ -17,4 +17,7 @@ const useGetCandidate: GetCandidateQuery = (config) => {
   return UseGraphQlQuery(GET_CANDIDATE, config);
 };
 
-export { useGetJobs, useGetCandidates, getApplication, useGetCandidate };
+const useGetRankings: GetRankings = (config) => {
+  return UseGraphQlQuery(GET_RANKINGS, config);
+};
+export { useGetJobs, useGetCandidates, getApplication, useGetCandidate, useGetRankings };
